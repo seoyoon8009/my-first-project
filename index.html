@@ -12,7 +12,7 @@
     <section id="input-section" class="card">
       <span class="badge">POKEMON SAJU</span>
       <h1>나의 파트너 포켓몬 찾기</h1>
-      <p class="subtitle">생년월일시를 입력하면 나와 닮은 포켓몬과 찰떡궁합 파트너를 찾아드려요.</p>
+      <p class="subtitle">생년월일시를 입력하면 나와 닮은 포켓몬과 찰떡궁합 파트너, 오늘의 운세까지 찾아드려요.</p>
 
       <form id="test-form">
         <div class="form-group">
@@ -89,7 +89,7 @@
     <section id="result-section" class="card hidden">
       <div id="result-card" class="result-box">
         <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
-        <img id="result-img" class="result-img" src="" alt="내 포켓몬 이미지" crossorigin='anonymous' />
+        <img id="result-img" class="result-img" src="" alt="내 포켓몬 이미지" crossorigin="anonymous" />
         <p id="result-user" class="user-label">님의 파트너 포켓몬</p>
         <h2 id="result-title">루카리오</h2>
         <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
@@ -126,8 +126,6 @@
               <p id="hap-reason" class="partner-reason"></p>
             </div>
 
-
-
             <div class="partner-card">
               <span id="sangsaeng-badge" class="partner-badge badge-sangsaeng">상생</span>
               <img id="sangsaeng-img" class="partner-img" src="" alt="상생 파트너" crossorigin="anonymous" />
@@ -136,7 +134,8 @@
             </div>
           </div>
         </div>
-<!-- ▼ 오늘의 운세 영역 추가 ▼ -->
+
+        <!-- 오늘의 운세 영역 -->
         <div class="fortune-section">
           <div class="fortune-header">
             <p class="partner-section-title">오늘의 기운 &amp; 운세</p>
@@ -181,7 +180,6 @@
     </section>
   </main>
 
-  <!-- 음력 ↔ 양력 변환 (한국천문연구원 기준, 1000~2050년 지원) -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/korean-lunar-calendar@0.4.0/dist/korean-lunar-calendar.min.js"></script>
   <script src="script.js"></script>

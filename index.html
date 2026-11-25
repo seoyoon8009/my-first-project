@@ -89,7 +89,7 @@
     <section id="result-section" class="card hidden">
       <div id="result-card" class="result-box">
         <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
-        <img id="result-img" class="result-img" src="" alt="내 포켓몬 이미지" />
+        <img id="result-img" class="result-img" src="" alt="내 포켓몬 이미지" crossorigin='anonymous' />
         <p id="result-user" class="user-label">님의 파트너 포켓몬</p>
         <h2 id="result-title">루카리오</h2>
         <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
@@ -121,7 +121,7 @@
           <div class="partner-grid">
             <div class="partner-card">
               <span id="hap-badge" class="partner-badge badge-hap">천간합</span>
-              <img id="hap-img" class="partner-img" src="" alt="천간합 파트너" />
+              <img id="hap-img" class="partner-img" src="" alt="천간합 파트너" crossorigin="anonymous" />
               <strong id="hap-name" class="partner-name">나몰빼미</strong>
               <p id="hap-reason" class="partner-reason"></p>
             </div>
@@ -130,7 +130,7 @@
 
             <div class="partner-card">
               <span id="sangsaeng-badge" class="partner-badge badge-sangsaeng">상생</span>
-              <img id="sangsaeng-img" class="partner-img" src="" alt="상생 파트너" />
+              <img id="sangsaeng-img" class="partner-img" src="" alt="상생 파트너" crossorigin="anonymous" />
               <strong id="sangsaeng-name" class="partner-name">잠만보</strong>
               <p id="sangsaeng-reason" class="partner-reason"></p>
             </div>
@@ -173,7 +173,8 @@
       </div>
 
       <div class="action-buttons">
-        <button type="button" id="copy-btn" class="btn-primary">테스트 링크 복사하기</button>
+        <button type="button" id="save-img-btn" class="btn-primary">결과 카드 이미지 저장</button>
+        <button type="button" id="copy-btn" class="btn-secondary">테스트 링크 복사하기</button>
         <button type="button" id="retry-btn" class="btn-secondary">다시 입력하기</button>
       </div>
       <p id="copy-msg" class="copy-msg hidden">링크가 클립보드에 복사되었습니다!</p>
@@ -181,6 +182,7 @@
   </main>
 
   <!-- 음력 ↔ 양력 변환 (한국천문연구원 기준, 1000~2050년 지원) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/korean-lunar-calendar@0.4.0/dist/korean-lunar-calendar.min.js"></script>
   <script src="script.js"></script>
 </body>

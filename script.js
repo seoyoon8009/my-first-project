@@ -584,3 +584,41 @@ document.getElementById("copy-btn").addEventListener("click", async () => {
     alert("주소창의 URL을 직접 복사해 주세요.");
   }
 });
+
+// 결과 카드 PNG 이미지 저장
+const saveImgBtn = document.getElementById("save-img-btn");
+saveImgBtn.addEventListener("click", async () => {
+  if (typeof html2canvas === "undefined") {
+    alert("이미지 저장 기능을 불러오지 못했어요. 새로고침 후 다시 시도해 주세요.");
+    return;
+  }
+
+  const target = document.getElementById("result-card");
+  const userName = document.getElementById("user-name").value.trim() || "나의";
+  const pokemonName = document.getElementById("result-title").textContent.trim() || "포켓몬";
+
+  const originalLabel = saveImgBtn.textContent;
+  saveImgBtn.disabled = true;
+  saveImgBtn.textContent = "이미지 생성 중...";
+
+  try {
+    const canvas = await html2canvas(target, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff"
+    });
+
+    const dataUrl = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = `${userName}_파트너포켓몬_${pokemonName}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (err) {
+    alert("이미지 저장 중 오류가 발생했어요. 화면 캡처 기능을 이용해 주세요.");
+  } finally {
+    saveImgBtn.disabled = false;
+    saveImgBtn.textContent = originalLabel;
+  }
+});

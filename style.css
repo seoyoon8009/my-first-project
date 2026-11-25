@@ -743,3 +743,7 @@ select:focus {
   font-weight: 600;
   margin-top: 10px;
 }
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}

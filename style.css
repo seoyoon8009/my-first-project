@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Notion Color Tokens */
   --primary: #0075de;
   --primary-active: #005bab;
   --secondary: #213183;
@@ -15,7 +14,6 @@
   --ink-faint: #a39e98;
   --hairline: #e6e6e6;
 
-  /* Notion Sticker Palette */
   --accent-sky: #62aef0;
   --accent-purple: #d6b6f6;
   --accent-purple-deep: #391c57;
@@ -26,7 +24,6 @@
   --accent-green: #1aae39;
   --accent-brown: #523410;
 
-  /* Notion Shape & Elevation Tokens */
   --rounded-xs: 4px;
   --rounded-sm: 5px;
   --rounded-md: 8px;
@@ -78,7 +75,6 @@ body {
   display: none !important;
 }
 
-/* Notion Eyebrow Badge Pill */
 .badge {
   display: inline-block;
   font-size: 12px;
@@ -125,7 +121,6 @@ label,
   margin-bottom: 6px;
 }
 
-/* Notion Text Input & Select (4px tight corners) */
 input[type="text"],
 select {
   width: 100%;
@@ -152,7 +147,6 @@ select:focus {
   box-shadow: var(--shadow-soft), 0 0 0 2px rgba(0, 117, 222, 0.14);
 }
 
-/* 성별 · 양력/음력 토글 */
 .segmented {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -232,7 +226,6 @@ select:focus {
   color: var(--accent-orange);
 }
 
-/* Notion Pill CTAs */
 .btn-primary,
 .btn-secondary {
   width: 100%;
@@ -258,6 +251,11 @@ select:focus {
   transform: scale(0.98);
 }
 
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
 .btn-secondary {
   background-color: var(--surface);
   color: var(--ink);
@@ -271,7 +269,6 @@ select:focus {
   transform: scale(0.98);
 }
 
-/* 결과 카드 영역 (Paper Surface + Top Sticker Accent Band) */
 .result-box {
   border-radius: var(--rounded-lg);
   padding: 24px 20px;
@@ -375,7 +372,6 @@ select:focus {
   word-break: keep-all;
 }
 
-/* 성별 × 일간 음양 */
 .yinyang-box {
   margin-top: 10px;
   text-align: left;
@@ -405,7 +401,6 @@ select:focus {
   word-break: keep-all;
 }
 
-/* 사주 명식 */
 .saju-section {
   margin-top: 18px;
   padding-top: 18px;
@@ -470,7 +465,6 @@ select:focus {
   border: 1px dashed #cccccc;
 }
 
-/* 오행 스티커 팔레트 (명식 + 막대 공통) */
 .el-wood { background-color: var(--accent-green); }
 .el-fire { background-color: var(--accent-orange); }
 .el-earth { background-color: #8c581c; }
@@ -560,7 +554,6 @@ select:focus {
   font-weight: 600;
 }
 
-/* 파트너 포켓몬 섹션 */
 .partner-section {
   margin-top: 18px;
   padding-top: 18px;
@@ -631,7 +624,6 @@ select:focus {
   word-break: keep-all;
 }
 
-/* 오늘의 운세 섹션 */
 .fortune-section {
   margin-top: 18px;
   padding-top: 18px;
@@ -742,8 +734,4 @@ select:focus {
   color: var(--accent-green);
   font-weight: 600;
   margin-top: 10px;
-}
-.btn-primary:disabled {
-  opacity: 0.65;
-  cursor: wait;
 }

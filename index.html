@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 파트너 포켓몬 테스트</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-container">
+    <!-- 1. 입력 화면 -->
+    <section id="input-section" class="card">
+      <span class="badge">POKEMON SAJU</span>
+      <h1>나의 파트너 포켓몬 찾기</h1>
+      <p class="subtitle">생년월일시를 입력하면 나와 닮은 포켓몬과 찰떡궁합 파트너를 찾아드려요.</p>
+
+      <form id="test-form">
+        <div class="form-group">
+          <label for="user-name">이름 또는 닉네임</label>
+          <input type="text" id="user-name" placeholder="예: 피카츄" maxlength="10" />
+        </div>
+
+        <div class="form-group">
+          <span class="label">성별</span>
+          <div class="segmented" role="radiogroup" aria-label="성별">
+            <label class="seg-option">
+              <input type="radio" name="gender" value="female" checked />
+              <span>여성</span>
+            </label>
+            <label class="seg-option">
+              <input type="radio" name="gender" value="male" />
+              <span>남성</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="label">양력 / 음력</span>
+          <div class="segmented" role="radiogroup" aria-label="양력 음력 선택">
+            <label class="seg-option">
+              <input type="radio" name="calendar" value="solar" checked />
+              <span>양력</span>
+            </label>
+            <label class="seg-option">
+              <input type="radio" name="calendar" value="lunar" />
+              <span>음력</span>
+            </label>
+          </div>
+          <label id="leap-wrap" class="leap-check hidden">
+            <input type="checkbox" id="is-leap" />
+            <span>윤달이에요</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <span class="label">생년월일</span>
+          <div class="date-row">
+            <select id="birth-year" aria-label="태어난 해"></select>
+            <select id="birth-month" aria-label="태어난 달"></select>
+            <select id="birth-day" aria-label="태어난 날"></select>
+          </div>
+          <p id="date-error" class="field-error hidden"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="birth-time">태어난 시간</label>
+          <select id="birth-time">
+            <option value="unknown">시간 모름</option>
+            <option value="자">자시 (23:30 ~ 01:29)</option>
+            <option value="축">축시 (01:30 ~ 03:29)</option>
+            <option value="인">인시 (03:30 ~ 05:29)</option>
+            <option value="묘">묘시 (05:30 ~ 07:29)</option>
+            <option value="진">진시 (07:30 ~ 09:29)</option>
+            <option value="사">사시 (09:30 ~ 11:29)</option>
+            <option value="오">오시 (11:30 ~ 13:29)</option>
+            <option value="미">미시 (13:30 ~ 15:29)</option>
+            <option value="신">신시 (15:30 ~ 17:29)</option>
+            <option value="유">유시 (17:30 ~ 19:29)</option>
+            <option value="술">술시 (19:30 ~ 21:29)</option>
+            <option value="해">해시 (21:30 ~ 23:29)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary">결과 카드 확인하기</button>
+      </form>
+    </section>
+
+    <!-- 2. 결과 화면 -->
+    <section id="result-section" class="card hidden">
+      <div id="result-card" class="result-box">
+        <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
+        <img id="result-img" class="result-img" src="" alt="내 포켓몬 이미지" />
+        <p id="result-user" class="user-label">님의 파트너 포켓몬</p>
+        <h2 id="result-title">루카리오</h2>
+        <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
+
+        <p id="result-birth" class="birth-info"></p>
+
+        <div id="result-keywords" class="keyword-list"></div>
+        <p id="result-desc" class="result-desc"></p>
+
+        <div class="yinyang-box">
+          <span id="yinyang-tag" class="yinyang-tag"></span>
+          <p id="yinyang-text" class="yinyang-text"></p>
+        </div>
+
+        <!-- 사주 명식 & 오행 분포 -->
+        <div class="saju-section">
+          <p class="partner-section-title">나의 사주 명식</p>
+          <div id="pillar-table" class="pillar-table"></div>
+          <p id="saju-note" class="saju-note hidden"></p>
+
+          <p class="partner-section-title element-title">오행 분포</p>
+          <div id="element-chart" class="element-chart"></div>
+          <p id="element-summary" class="element-summary"></p>
+        </div>
+
+        <!-- 잘 맞는 파트너 포켓몬 영역 -->
+        <div class="partner-section">
+          <p class="partner-section-title">나와 찰떡궁합 파트너 포켓몬</p>
+          <div class="partner-grid">
+            <div class="partner-card">
+              <span id="hap-badge" class="partner-badge badge-hap">천간합</span>
+              <img id="hap-img" class="partner-img" src="" alt="천간합 파트너" />
+              <strong id="hap-name" class="partner-name">나몰빼미</strong>
+              <p id="hap-reason" class="partner-reason"></p>
+            </div>
+
+
+
+            <div class="partner-card">
+              <span id="sangsaeng-badge" class="partner-badge badge-sangsaeng">상생</span>
+              <img id="sangsaeng-img" class="partner-img" src="" alt="상생 파트너" />
+              <strong id="sangsaeng-name" class="partner-name">잠만보</strong>
+              <p id="sangsaeng-reason" class="partner-reason"></p>
+            </div>
+          </div>
+        </div>
+<!-- ▼ 오늘의 운세 영역 추가 ▼ -->
+        <div class="fortune-section">
+          <div class="fortune-header">
+            <p class="partner-section-title">오늘의 기운 &amp; 운세</p>
+            <span id="today-pillar-tag" class="today-tag"></span>
+          </div>
+          <p id="fortune-overall" class="fortune-overall"></p>
+
+          <div class="fortune-list">
+            <div class="fortune-item">
+              <div class="fortune-item-top">
+                <span class="fortune-cat">💰 금전운</span>
+                <span id="fortune-money-badge" class="fortune-badge"></span>
+              </div>
+              <p id="fortune-money-text" class="fortune-text"></p>
+            </div>
+
+            <div class="fortune-item">
+              <div class="fortune-item-top">
+                <span class="fortune-cat">💖 연애·대인운</span>
+                <span id="fortune-love-badge" class="fortune-badge"></span>
+              </div>
+              <p id="fortune-love-text" class="fortune-text"></p>
+            </div>
+
+            <div class="fortune-item">
+              <div class="fortune-item-top">
+                <span class="fortune-cat">📚 공부·업무운</span>
+                <span id="fortune-study-badge" class="fortune-badge"></span>
+              </div>
+              <p id="fortune-study-text" class="fortune-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" id="copy-btn" class="btn-primary">테스트 링크 복사하기</button>
+        <button type="button" id="retry-btn" class="btn-secondary">다시 입력하기</button>
+      </div>
+      <p id="copy-msg" class="copy-msg hidden">링크가 클립보드에 복사되었습니다!</p>
+    </section>
+  </main>
+
+  <!-- 음력 ↔ 양력 변환 (한국천문연구원 기준, 1000~2050년 지원) -->
+  <script src="https://cdn.jsdelivr.net/npm/korean-lunar-calendar@0.4.0/dist/korean-lunar-calendar.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

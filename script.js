@@ -475,6 +475,12 @@ function toSolarDate(calendar, y, m, d, isLeap) {
   return `${s.year}-${pad(s.month)}-${pad(s.day)}`;
 }
 
+function setPokemonImage(el, src, alt) {
+  el.crossOrigin = "anonymous";
+  el.src = src;
+  el.alt = alt;
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   dateError.classList.add("hidden");
@@ -522,7 +528,6 @@ form.addEventListener("submit", (e) => {
   document.getElementById("result-birth").textContent =
     `${genderText} · ${inputText}${solarNote}`;
 
-  // 성별 × 일간 음양
   const stemIsYang = YANG_STEMS.includes(pillar.stem);
   const genderIsYang = gender === "male";
   const yy = YINYANG_TEXT[stemIsYang === genderIsYang ? "same" : "cross"];
@@ -530,9 +535,7 @@ form.addEventListener("submit", (e) => {
     `${stemIsYang ? "양(陽)" : "음(陰)"} 일간 · ${genderText} · ${yy.tag}`;
   document.getElementById("yinyang-text").textContent = yy.text;
 
-  const resultImg = document.getElementById("result-img");
-  resultImg.src = info.img;
-  resultImg.alt = info.pokemonName;
+  setPokemonImage(document.getElementById("result-img"), info.img, info.pokemonName);
 
   document.getElementById("result-user").textContent = `${userName}님의 파트너 포켓몬`;
   document.getElementById("result-title").textContent = info.pokemonName;
@@ -549,16 +552,14 @@ form.addEventListener("submit", (e) => {
   // 2. 천간합 파트너 세팅
   const hapPokemon = RESULT_DATA[info.hap.target];
   document.getElementById("hap-badge").textContent = info.hap.label;
-  document.getElementById("hap-img").src = hapPokemon.img;
-  document.getElementById("hap-img").alt = hapPokemon.pokemonName;
+  setPokemonImage(document.getElementById("hap-img"), hapPokemon.img, hapPokemon.pokemonName);
   document.getElementById("hap-name").textContent = hapPokemon.pokemonName;
   document.getElementById("hap-reason").textContent = info.hap.reason;
 
   // 3. 오행 상생 파트너 세팅
   const sangsaengPokemon = RESULT_DATA[info.sangsaeng.target];
   document.getElementById("sangsaeng-badge").textContent = info.sangsaeng.label;
-  document.getElementById("sangsaeng-img").src = sangsaengPokemon.img;
-  document.getElementById("sangsaeng-img").alt = sangsaengPokemon.pokemonName;
+  setPokemonImage(document.getElementById("sangsaeng-img"), sangsaengPokemon.img, sangsaengPokemon.pokemonName);
   document.getElementById("sangsaeng-name").textContent = sangsaengPokemon.pokemonName;
   document.getElementById("sangsaeng-reason").textContent = info.sangsaeng.reason;
 
@@ -585,7 +586,7 @@ document.getElementById("copy-btn").addEventListener("click", async () => {
   }
 });
 
-// 결과 카드 PNG 이미지 저장
+// 결과 카드 PNG 이미지 저장 (PC·모바일 호환 Blob 다운로드)
 const saveImgBtn = document.getElementById("save-img-btn");
 saveImgBtn.addEventListener("click", async () => {
   if (typeof html2canvas === "undefined") {
@@ -596,6 +597,7 @@ saveImgBtn.addEventListener("click", async () => {
   const target = document.getElementById("result-card");
   const userName = document.getElementById("user-name").value.trim() || "나의";
   const pokemonName = document.getElementById("result-title").textContent.trim() || "포켓몬";
+  const fileName = `${userName}_파트너포켓몬_${pokemonName}.png`;
 
   const originalLabel = saveImgBtn.textContent;
   saveImgBtn.disabled = true;
@@ -605,16 +607,27 @@ saveImgBtn.addEventListener("click", async () => {
     const canvas = await html2canvas(target, {
       scale: 2,
       useCORS: true,
+      allowTaint: false,
       backgroundColor: "#ffffff"
     });
 
-    const dataUrl = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = `${userName}_파트너포켓몬_${pokemonName}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    await new Promise((resolve, reject) => {
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          reject(new Error("Blob creation failed"));
+          return;
+        }
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        resolve();
+      }, "image/png");
+    });
   } catch (err) {
     alert("이미지 저장 중 오류가 발생했어요. 화면 캡처 기능을 이용해 주세요.");
   } finally {

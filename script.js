@@ -126,7 +126,6 @@ const BRANCH_DATA = {
 
 /* ───────── 60갑자 일주별 고유 포켓몬 (60종) ───────── */
 const PILLAR_POKEMON = {
-  // 갑(甲)
   갑자: { id: 1, name: "이상해씨", subtitle: "깊은 밤 지혜를 틔워 가장 먼저 싹트는 캠퍼스 새내기" },
   갑인: { id: 252, name: "나무지기", subtitle: "목표를 향해 곧게 뻗어 나가는 조별과제 직진 리더" },
   갑진: { id: 389, name: "토대부기", subtitle: "큰 그림을 설계하고 팀 전체를 든든히 이끄는 거목" },
@@ -134,7 +133,6 @@ const PILLAR_POKEMON = {
   갑신: { id: 387, name: "모부기", subtitle: "돌발 상황에서도 침착하게 돌파구를 뚫는 실전형 리더" },
   갑술: { id: 650, name: "도치마론", subtitle: "맡은 일은 끝까지 책임지고 완수하는 의리의 개척자" },
 
-  // 을(乙)
   을축: { id: 43, name: "뚜벅쵸", subtitle: "묵묵히 뿌리를 내리며 끝내 결과를 만들어내는 뚝심파" },
   을묘: { id: 722, name: "나몰빼미", subtitle: "어떤 팀에서도 제 몫을 해내는 유연한 캠퍼스 전략가" },
   을사: { id: 495, name: "주리비얀", subtitle: "부드러운 미소 뒤에 치밀한 계산을 품은 스마트 지략가" },
@@ -142,7 +140,6 @@ const PILLAR_POKEMON = {
   을유: { id: 549, name: "드레디어", subtitle: "섬세한 기준과 미적 감각으로 완성도를 높이는 깔끔러" },
   을해: { id: 270, name: "연꽃몬", subtitle: "어디서든 자연스럽게 스며들어 아이디어를 피우는 감성파" },
 
-  // 병(丙)
   병자: { id: 155, name: "브케인", subtitle: "평소엔 차분하다가 결정적 순간 불꽃처럼 몰입하는 반전파" },
   병인: { id: 4, name: "파이리", subtitle: "어색한 첫 수업 분위기도 단숨에 녹이는 태양 에너지 센터" },
   병진: { id: 6, name: "리자몽", subtitle: "스케일 큰 기획과 압도적 존재감으로 무대를 장악하는 발표왕" },
@@ -150,7 +147,6 @@ const PILLAR_POKEMON = {
   병신: { id: 390, name: "불꽃숭이", subtitle: "재치 넘치는 순발력으로 위기를 기회로 바꾸는 분위기 메이커" },
   병술: { id: 58, name: "가디", subtitle: "밝은 에너지와 뜨거운 의리로 동기를 챙기는 캠퍼스 수호자" },
 
-  // 정(丁)
   정축: { id: 607, name: "불켜미", subtitle: "은은하지만 꺼지지 않는 집중력으로 시험기간을 버티는 뚝심파" },
   정묘: { id: 37, name: "식스테일", subtitle: "차분함 속에 뜨거운 몰입력을 품은 섬세한 디테일 장인" },
   정사: { id: 653, name: "푸호꼬", subtitle: "예리한 통찰로 교수님의 출제 의도를 꿰뚫는 전략가" },
@@ -158,7 +154,6 @@ const PILLAR_POKEMON = {
   정유: { id: 725, name: "냐오불", subtitle: "쿨한 겉모습 뒤에 완벽한 결과물을 준비하는 디테일 승부사" },
   정해: { id: 136, name: "부스터", subtitle: "포근한 감성과 자유로운 영감을 지닌 밤샘 아이디어 뱅크" },
 
-  // 무(戊)
   무자: { id: 195, name: "누오", subtitle: "겉은 느긋해 보여도 속으론 핵심을 다 꿰뚫고 있는 실속파" },
   무인: { id: 232, name: "코리갑", subtitle: "묵직한 추진력으로 막힌 프로젝트를 밀고 나가는 행동대장" },
   무진: { id: 445, name: "한카리아스", subtitle: "거대한 스케일과 승부욕으로 목표를 쟁취하는 올라운드 에이스" },
@@ -166,7 +161,6 @@ const PILLAR_POKEMON = {
   무신: { id: 246, name: "애버라스", subtitle: "탄탄한 기본기에 빠른 임기응변을 겸비한 숨은 실력자" },
   무술: { id: 745, name: "루가루암", subtitle: "한번 맺은 약속과 역할을 끝까지 지키는 단단한 의리파" },
 
-  // 기(己)
   기축: { id: 104, name: "탕구리", subtitle: "조용히 자기 분량을 완벽히 챙기는 성실한 실무 전문가" },
   기묘: { id: 133, name: "이브이", subtitle: "자료 조사부터 정리까지 야무지게 해내는 만능 올라운더" },
   기사: { id: 27, name: "모래두지", subtitle: "실속과 효율을 정확히 계산해 빈틈없이 움직이는 전략가" },
@@ -174,7 +168,6 @@ const PILLAR_POKEMON = {
   기유: { id: 302, name: "깜까미", subtitle: "남들이 놓치는 작은 디테일까지 보석처럼 찾아내는 분석가" },
   기해: { id: 220, name: "꾸꾸리", subtitle: "편안한 매력으로 주변을 무장해제시키는 감성 실용주의자" },
 
-  // 경(庚)
   경자: { id: 227, name: "무장조", subtitle: "날카로운 판단력과 밤샘 집중력으로 승부하는 쿨한 전략가" },
   경인: { id: 403, name: "코링크", subtitle: "망설임 없는 결단력으로 새로운 도전을 이끄는 행동파" },
   경진: { id: 376, name: "메타그로스", subtitle: "압도적인 논리와 큰 그림으로 팀을 캐리하는 강철 브레인" },
@@ -182,7 +175,6 @@ const PILLAR_POKEMON = {
   경신: { id: 123, name: "스라크", subtitle: "빠른 상황 판단과 깔끔한 일 처리로 마감 시간을 지배하는 해결사" },
   경술: { id: 304, name: "가보리", subtitle: "원칙과 책임을 목숨처럼 지키는 단단한 신뢰의 아이콘" },
 
-  // 신(辛)
   신축: { id: 303, name: "입치트", subtitle: "차분한 뚝심으로 완벽한 퀄리티를 벼려내는 내실형 장인" },
   신묘: { id: 700, name: "님피아", subtitle: "예리한 감각과 센스로 결과물의 완성도를 끌어올리는 아티스트" },
   신사: { id: 282, name: "가디안", subtitle: "냉철한 통찰과 우아한 카리스마로 팀의 품격을 높이는 설계자" },
@@ -190,7 +182,6 @@ const PILLAR_POKEMON = {
   신유: { id: 196, name: "에브이", subtitle: "한 치의 오차도 허용하지 않는 날카로운 직관의 완벽주의자" },
   신해: { id: 39, name: "푸린", subtitle: "맑은 감성과 유연한 센스로 누구와도 잘 어우러지는 매력파" },
 
-  // 임(壬)
   임자: { id: 130, name: "갸라도스", subtitle: "깊은 통찰과 폭발적인 추진력을 동시에 품은 거대한 파도" },
   임인: { id: 7, name: "꼬부기", subtitle: "틀에 갇히지 않고 유연하게 돌파하는 유쾌한 캠퍼스 탐험가" },
   임진: { id: 131, name: "라프라스", subtitle: "넓은 시야와 포용력으로 팀원들을 목적지까지 이끄는 항해사" },
@@ -198,7 +189,6 @@ const PILLAR_POKEMON = {
   임신: { id: 54, name: "고라파덕", subtitle: "엉뚱해 보여도 결정적 순간 천재적 아이디어를 터뜨리는 해결사" },
   임술: { id: 134, name: "샤미드", subtitle: "자유로운 감성과 묵직한 의리를 겸비한 깊이 있는 조력자" },
 
-  // 계(癸)
   계축: { id: 194, name: "우파", subtitle: "고요한 뚝심으로 자기 페이스를 지키며 스며드는 실속파" },
   계묘: { id: 183, name: "마릴", subtitle: "맑은 직관과 다정한 센스로 팀에 활력을 불어넣는 아이디어 뱅크" },
   계사: { id: 197, name: "블래키", subtitle: "조용하지만 치밀한 전략으로 밤에 더 빛나는 미스터리 기획자" },
@@ -214,6 +204,7 @@ function getPokemonInfo(stem, branch) {
   const poke = PILLAR_POKEMON[key];
 
   return {
+    dexNo: `No.${String(poke.id).padStart(3, "0")}`,
     theme: stemData.theme,
     pokemonName: poke.name,
     img: `${ARTWORK_BASE}/${poke.id}.png`,
@@ -225,7 +216,55 @@ function getPokemonInfo(stem, branch) {
   };
 }
 
-/* ───────── 천지덕합(천간합+지지육합) & 상생·삼합 파트너 계산 ───────── */
+/* ───────── 캠퍼스 능력치 스탯 계산 ───────── */
+
+const STEM_STATS = [
+  [94, 78, 84, 86], // 갑
+  [80, 88, 92, 85], // 을
+  [92, 76, 96, 82], // 병
+  [82, 94, 84, 88], // 정
+  [84, 82, 88, 97], // 무
+  [83, 93, 91, 89], // 기
+  [95, 86, 80, 92], // 경
+  [81, 97, 83, 87], // 신
+  [90, 81, 93, 86], // 임
+  [84, 91, 87, 85]  // 계
+];
+
+const BRANCH_BONUS = [
+  [0, 4, -1, 2], // 자
+  [1, 3, 0, 4],  // 축
+  [5, -1, 2, 1], // 인
+  [0, 2, 5, 0],  // 묘
+  [3, 1, 2, 3],  // 진
+  [2, 4, 0, 2],  // 사
+  [5, -2, 4, 1], // 오
+  [-1, 2, 5, 2], // 미
+  [3, 2, 3, 0],  // 신
+  [1, 5, -1, 2], // 유
+  [2, 2, 1, 4],  // 술
+  [1, 1, 4, 2]   // 해
+];
+
+function renderCampusStats(pillar) {
+  const base = STEM_STATS[pillar.stemIdx];
+  const bonus = BRANCH_BONUS[pillar.branchIdx];
+  const clamp = (v) => Math.max(72, Math.min(99, v));
+
+  const values = {
+    drive: clamp(base[0] + bonus[0]),
+    detail: clamp(base[1] + bonus[1]),
+    social: clamp(base[2] + bonus[2]),
+    mental: clamp(base[3] + bonus[3])
+  };
+
+  Object.entries(values).forEach(([key, val]) => {
+    document.getElementById(`stat-${key}`).style.width = `${val}%`;
+    document.getElementById(`stat-${key}-val`).textContent = val;
+  });
+}
+
+/* ───────── 천지덕합 & 상생삼합 파트너 계산 ───────── */
 
 const YUKHAP_MAP = [1, 0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
 
@@ -258,14 +297,12 @@ const SANGSAENG_REASONS = {
 function getPartnerPillars(stemIdx, branchIdx) {
   const myStem = STEMS[stemIdx];
 
-  // 1. 천지덕합 (천간합 + 지지육합)
   const hapStemIdx = (stemIdx + 5) % 10;
   const hapBranchIdx = YUKHAP_MAP[branchIdx];
   const hapStem = STEMS[hapStemIdx];
   const hapBranch = BRANCHES[hapBranchIdx];
   const hapInfo = getPokemonInfo(hapStem, hapBranch);
 
-  // 2. 상생·삼합 (나를 생해주는 천간 + 지지삼합)
   const sangStemIdx = (stemIdx + 8) % 10;
   const sangBranchIdx = (branchIdx + 4) % 12;
   const sangStem = STEMS[sangStemIdx];
@@ -274,13 +311,11 @@ function getPartnerPillars(stemIdx, branchIdx) {
 
   return {
     hap: {
-      pillarText: `${hapStem}${hapBranch}일주`,
       label: `천지덕합 · ${hapStem}${hapBranch}`,
       pokemon: hapInfo,
       reason: HAP_REASONS[myStem]
     },
     sangsaeng: {
-      pillarText: `${sangStem}${sangBranch}일주`,
       label: `상생삼합 · ${sangStem}${sangBranch}`,
       pokemon: sangInfo,
       reason: SANGSAENG_REASONS[myStem]
@@ -582,9 +617,32 @@ function renderTodayFortune(myStemIdx) {
   setItem("rest", f.rest);
 }
 
-/* ───────── 친구 공유 링크 파싱 & 팀플·우정 궁합 계산 ───────── */
+/* ───────── 모드 전환 & 친구 궁합 (URL 초대 + 둘이서 바로 궁합) ───────── */
 
+let activeMode = "solo";
 let invitedFriend = null;
+
+const tabSolo = document.getElementById("tab-solo");
+const tabDuo = document.getElementById("tab-duo");
+const myBlockLabel = document.getElementById("my-block-label");
+const duoFields = document.getElementById("duo-fields");
+const submitBtn = document.getElementById("submit-btn");
+
+function setMode(mode) {
+  activeMode = mode;
+  const isDuo = mode === "duo";
+  tabSolo.classList.toggle("is-active", !isDuo);
+  tabSolo.setAttribute("aria-selected", String(!isDuo));
+  tabDuo.classList.toggle("is-active", isDuo);
+  tabDuo.setAttribute("aria-selected", String(isDuo));
+
+  myBlockLabel.classList.toggle("hidden", !isDuo);
+  duoFields.classList.toggle("hidden", !isDuo);
+  submitBtn.textContent = isDuo ? "둘이서 궁합 & 결과 확인하기" : "결과 카드 확인하기";
+}
+
+tabSolo.addEventListener("click", () => setMode("solo"));
+tabDuo.addEventListener("click", () => setMode("duo"));
 
 function parseFriendFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -595,8 +653,7 @@ function parseFriendFromUrl() {
   const branch = fp[1];
   const stemIdx = STEMS.indexOf(stem);
   const branchIdx = BRANCHES.indexOf(branch);
-  if (stemIdx === -1 || branchIdx === -1) return null;
-  if (!PILLAR_POKEMON[fp]) return null;
+  if (stemIdx === -1 || branchIdx === -1 || !PILLAR_POKEMON[fp]) return null;
 
   const rawName = (params.get("fn") || "").trim().slice(0, 10);
   const name = rawName || "친구";
@@ -694,15 +751,15 @@ function calcCompatibility(myPillar, friendPillar, myName, friendName) {
   return { score, headline, desc };
 }
 
-function renderFriendCompatibility(myPillar, myInfo, myName) {
+function renderFriendCompatibility(myPillar, myInfo, myName, partnerData) {
   const section = document.getElementById("friend-compat-section");
-  if (!invitedFriend) {
+  if (!partnerData) {
     section.classList.add("hidden");
     return;
   }
 
   const displayMyName = myName === "당신" ? "나" : myName;
-  const result = calcCompatibility(myPillar, invitedFriend.pillar, displayMyName, invitedFriend.name);
+  const result = calcCompatibility(myPillar, partnerData.pillar, displayMyName, partnerData.name);
 
   document.getElementById("compat-score-badge").textContent = `${result.score}점`;
   setPokemonImage(document.getElementById("compat-my-img"), myInfo.img, myInfo.pokemonName);
@@ -710,11 +767,11 @@ function renderFriendCompatibility(myPillar, myInfo, myName) {
 
   setPokemonImage(
     document.getElementById("compat-friend-img"),
-    invitedFriend.info.img,
-    invitedFriend.info.pokemonName
+    partnerData.info.img,
+    partnerData.info.pokemonName
   );
   document.getElementById("compat-friend-name").textContent =
-    `${invitedFriend.name} (${invitedFriend.info.pokemonName})`;
+    `${partnerData.name} (${partnerData.info.pokemonName})`;
 
   document.getElementById("compat-headline").textContent = result.headline;
   document.getElementById("compat-desc").textContent = result.desc;
@@ -728,6 +785,7 @@ const YEAR_MAX = 2050;
 
 const form = document.getElementById("test-form");
 const inputSection = document.getElementById("input-section");
+const loadingSection = document.getElementById("loading-section");
 const resultSection = document.getElementById("result-section");
 
 const yearSel = document.getElementById("birth-year");
@@ -736,6 +794,13 @@ const daySel = document.getElementById("birth-day");
 const leapWrap = document.getElementById("leap-wrap");
 const leapCheck = document.getElementById("is-leap");
 const dateError = document.getElementById("date-error");
+
+const friendYearSel = document.getElementById("friend-year");
+const friendMonthSel = document.getElementById("friend-month");
+const friendDaySel = document.getElementById("friend-day");
+const friendLeapWrap = document.getElementById("friend-leap-wrap");
+const friendLeapCheck = document.getElementById("friend-is-leap");
+const friendDateError = document.getElementById("friend-date-error");
 
 let latestMyPillar = null;
 let latestUserName = "친구";
@@ -756,48 +821,61 @@ function fillSelect(sel, from, to, suffix, selected) {
   }
 }
 
-function refreshDays() {
-  const y = Number(yearSel.value);
-  const m = Number(monthSel.value);
-  const current = Number(daySel.value) || 1;
-  const maxDay =
-    getRadio("calendar") === "lunar" ? 30 : new Date(Date.UTC(y, m, 0)).getUTCDate();
-  fillSelect(daySel, 1, maxDay, "일", Math.min(current, maxDay));
+function bindDateSelectors(yEl, mEl, dEl, calName, lWrap, lCheck, errEl) {
+  const refresh = () => {
+    const y = Number(yEl.value);
+    const m = Number(mEl.value);
+    const current = Number(dEl.value) || 1;
+    const maxDay = getRadio(calName) === "lunar" ? 30 : new Date(Date.UTC(y, m, 0)).getUTCDate();
+    fillSelect(dEl, 1, maxDay, "일", Math.min(current, maxDay));
+  };
+
+  fillSelect(yEl, YEAR_MAX, YEAR_MIN, "년", 2004);
+  fillSelect(mEl, 1, 12, "월", 1);
+  fillSelect(dEl, 1, 31, "일", 1);
+
+  yEl.addEventListener("change", refresh);
+  mEl.addEventListener("change", refresh);
+  document.querySelectorAll(`input[name="${calName}"]`).forEach((r) =>
+    r.addEventListener("change", () => {
+      const isLunar = getRadio(calName) === "lunar";
+      lWrap.classList.toggle("hidden", !isLunar);
+      if (!isLunar) lCheck.checked = false;
+      errEl.classList.add("hidden");
+      refresh();
+    })
+  );
 }
 
-fillSelect(yearSel, YEAR_MAX, YEAR_MIN, "년", 2004);
-fillSelect(monthSel, 1, 12, "월", 1);
-fillSelect(daySel, 1, 31, "일", 1);
+bindDateSelectors(yearSel, monthSel, daySel, "calendar", leapWrap, leapCheck, dateError);
+bindDateSelectors(
+  friendYearSel,
+  friendMonthSel,
+  friendDaySel,
+  "friend-calendar",
+  friendLeapWrap,
+  friendLeapCheck,
+  friendDateError
+);
 initFriendInviteBanner();
 
-yearSel.addEventListener("change", refreshDays);
-monthSel.addEventListener("change", refreshDays);
-document.querySelectorAll('input[name="calendar"]').forEach((r) =>
-  r.addEventListener("change", () => {
-    const isLunar = getRadio("calendar") === "lunar";
-    leapWrap.classList.toggle("hidden", !isLunar);
-    if (!isLunar) leapCheck.checked = false;
-    dateError.classList.add("hidden");
-    refreshDays();
-  })
-);
-
-function showDateError(msg) {
-  dateError.textContent = msg;
-  dateError.classList.remove("hidden");
+function showFieldError(el, msg) {
+  el.textContent = msg;
+  el.classList.remove("hidden");
 }
 
-function toSolarDate(calendar, y, m, d, isLeap) {
+function toSolarDate(calendar, y, m, d, isLeap, errEl) {
   const pad = (n) => String(n).padStart(2, "0");
   if (calendar === "solar") return `${y}-${pad(m)}-${pad(d)}`;
 
   if (typeof KoreanLunarCalendar === "undefined") {
-    showDateError("음력 변환 기능을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.");
+    showFieldError(errEl, "음력 변환 기능을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.");
     return null;
   }
   const cal = new KoreanLunarCalendar();
   if (!cal.setLunarDate(y, m, d, isLeap)) {
-    showDateError(
+    showFieldError(
+      errEl,
       isLeap
         ? `음력 ${y}년에는 윤${m}월이 없거나, 해당 날짜가 존재하지 않아요.`
         : `음력 ${y}년 ${m}월에는 ${d}일이 없어요. (작은 달은 29일까지)`
@@ -814,9 +892,40 @@ function setPokemonImage(el, src, alt) {
   el.alt = alt;
 }
 
+function runLoadingTransition(onComplete) {
+  const stepText = document.getElementById("loading-step-text");
+  const barFill = document.getElementById("loading-bar-fill");
+
+  inputSection.classList.add("hidden");
+  loadingSection.classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  barFill.style.width = "18%";
+  stepText.textContent = "60갑자 일주와 사주 명식을 계산하고 있어요...";
+
+  setTimeout(() => {
+    barFill.style.width = "62%";
+    stepText.textContent = "오행 균형과 내 파트너 포켓몬을 매칭하는 중...";
+  }, 450);
+
+  setTimeout(() => {
+    barFill.style.width = "100%";
+    stepText.textContent = "오늘의 캠퍼스 운세와 궁합 카드를 완성했어요!";
+  }, 950);
+
+  setTimeout(() => {
+    loadingSection.classList.add("hidden");
+    barFill.style.width = "0%";
+    resultSection.classList.remove("hidden");
+    resultSection.classList.add("fade-in");
+    if (onComplete) onComplete();
+  }, 1350);
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   dateError.classList.add("hidden");
+  friendDateError.classList.add("hidden");
 
   const rawInputName = document.getElementById("user-name").value.trim();
   const userName = rawInputName || "당신";
@@ -830,8 +939,29 @@ form.addEventListener("submit", (e) => {
   const d = Number(daySel.value);
   const birthTime = document.getElementById("birth-time").value;
 
-  const birthDate = toSolarDate(calendar, y, m, d, isLeap);
+  const birthDate = toSolarDate(calendar, y, m, d, isLeap, dateError);
   if (!birthDate) return;
+
+  // 둘이서 바로 궁합 모드일 때 상대방 날짜 변환 및 검증
+  let partnerForCompat = invitedFriend;
+  if (activeMode === "duo") {
+    const fName = document.getElementById("friend-name").value.trim() || "상대방";
+    const fCal = getRadio("friend-calendar");
+    const fLeap = fCal === "lunar" && friendLeapCheck.checked;
+    const fy = Number(friendYearSel.value);
+    const fm = Number(friendMonthSel.value);
+    const fd = Number(friendDaySel.value);
+
+    const fSolar = toSolarDate(fCal, fy, fm, fd, fLeap, friendDateError);
+    if (!fSolar) return;
+
+    const fPillar = getDayPillar(fSolar);
+    partnerForCompat = {
+      name: fName,
+      pillar: fPillar,
+      info: getPokemonInfo(fPillar.stem, fPillar.branch)
+    };
+  }
 
   const pillars = getFourPillars(birthDate, birthTime);
   const pillar = pillars.day;
@@ -854,6 +984,7 @@ form.addEventListener("submit", (e) => {
   const timeText = birthTime === "unknown" ? "" : ` · ${birthTime}시생`;
   document.getElementById("result-pillar").textContent =
     `${pillar.stem}${pillar.branch}(${pillar.hanja})일주${timeText}`;
+  document.getElementById("result-dex-no").textContent = info.dexNo;
 
   const genderText = gender === "male" ? "남성" : "여성";
   const inputText =
@@ -872,13 +1003,8 @@ form.addEventListener("submit", (e) => {
     `${stemIsYang ? "양(陽)" : "음(陰)"} 일간 · ${genderText} · ${yy.tag}`;
   document.getElementById("yinyang-text").textContent = yy.text;
 
-  // 일지(지지) 성향 세팅
-  const branchTagEl = document.getElementById("branch-tag");
-  const branchTextEl = document.getElementById("branch-text");
-  if (branchTagEl && branchTextEl) {
-    branchTagEl.textContent = info.branchTag;
-    branchTextEl.textContent = info.branchDesc;
-  }
+  document.getElementById("branch-tag").textContent = info.branchTag;
+  document.getElementById("branch-text").textContent = info.branchDesc;
 
   setPokemonImage(document.getElementById("result-img"), info.img, info.pokemonName);
 
@@ -895,10 +1021,13 @@ form.addEventListener("submit", (e) => {
 
   document.getElementById("result-card").className = `result-box ${info.theme}`;
 
-  // 2. 친구 공유 링크 접속 시 궁합 카드 세팅
-  renderFriendCompatibility(pillar, info, userName);
+  // 2. 캠퍼스 능력치 스탯 세팅
+  renderCampusStats(pillar);
 
-  // 3. 캠퍼스 파트너 세팅 (천지덕합 & 상생삼합)
+  // 3. 궁합 카드 세팅 (URL 초대 또는 둘이서 바로 궁합)
+  renderFriendCompatibility(pillar, info, userName, partnerForCompat);
+
+  // 4. 캠퍼스 파트너 세팅 (천지덕합 & 상생삼합)
   const partners = getPartnerPillars(pillar.stemIdx, pillar.branchIdx);
 
   document.getElementById("hap-badge").textContent = partners.hap.label;
@@ -915,13 +1044,11 @@ form.addEventListener("submit", (e) => {
   document.getElementById("sangsaeng-name").textContent = partners.sangsaeng.pokemon.pokemonName;
   document.getElementById("sangsaeng-reason").textContent = partners.sangsaeng.reason;
 
-  // 4. 오늘의 캠퍼스 운세 세팅
+  // 5. 오늘의 캠퍼스 운세 세팅
   renderTodayFortune(pillar.stemIdx);
 
-  // 화면 전환
-  inputSection.classList.add("hidden");
-  resultSection.classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // 로딩 애니메이션 후 결과 화면 표시
+  runLoadingTransition();
 });
 
 document.getElementById("retry-btn").addEventListener("click", () => {

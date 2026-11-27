@@ -633,19 +633,28 @@ function isBranchYukHap(b1, b2) {
   return YUKHAP_MAP[b1] === b2;
 }
 
+function isBranchSamHap(b1, b2) {
+  return b1 !== b2 && b1 % 4 === b2 % 4;
+}
+
 function calcCompatibility(myPillar, friendPillar, myName, friendName) {
   const s1 = myPillar.stemIdx;
   const s2 = friendPillar.stemIdx;
   const el1 = STEM_ELEMENT[s1];
   const el2 = STEM_ELEMENT[s2];
   const yukHap = isBranchYukHap(myPillar.branchIdx, friendPillar.branchIdx);
+  const samHap = isBranchSamHap(myPillar.branchIdx, friendPillar.branchIdx);
 
   let score = 84;
   let headline = "";
   let desc = "";
 
-  if ((s1 + 5) % 10 === s2) {
-    score = 98;
+  if ((s1 + 5) % 10 === s2 && yukHap) {
+    score = 100;
+    headline = "천지덕합 · 60갑자 중 단 하나뿐인 운명의 베스트 파트너";
+    desc = `${myName}님과 ${friendName}님은 겉(천간합)과 속마음(지지육합)이 동시에 맞물리는 희귀한 천지덕합 관계예요! 기획부터 마무리까지 빈틈없이 채워주는 최고의 캠퍼스 단짝입니다.`;
+  } else if ((s1 + 5) % 10 === s2) {
+    score = 97;
     headline = "천간합 · 눈빛만 봐도 역할 분담 끝나는 천생연분 콤비";
     desc = `${myName}님과 ${friendName}님은 서로의 빈틈을 자석처럼 끌어당겨 채워주는 천간합 관계예요. 한 명이 기획을 열면 다른 한 명이 디테일을 완성해 조별과제 A+ 확률이 가장 높은 조합입니다.`;
   } else if ((el2 + 1) % 5 === el1) {
@@ -674,9 +683,12 @@ function calcCompatibility(myPillar, friendPillar, myName, friendName) {
     desc = `서로 다른 오행 기운을 가지고 있어 처음엔 스타일이 다르게 느껴질 수 있지만, 막상 함께 일하면 내가 놓친 부분을 상대가 정확히 짚어주는 알짜배기 조합입니다.`;
   }
 
-  if (yukHap) {
-    score = Math.min(100, score + 2);
+  if (score < 100 && yukHap) {
+    score = Math.min(99, score + 3);
     desc += " 게다가 속마음(지지 육합)까지 잘 맞아 오래 함께할수록 신뢰가 깊어지는 사이예요.";
+  } else if (score < 100 && samHap) {
+    score = Math.min(99, score + 2);
+    desc += " 여기에 행동 방향(지지 삼합)까지 같은 팀을 이루어 함께 움직일 때 시너지가 배가 됩니다.";
   }
 
   return { score, headline, desc };

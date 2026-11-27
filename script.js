@@ -6,108 +6,287 @@ const BRANCHES_HANJA = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", 
 const ARTWORK_BASE =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork";
 
-const RESULT_DATA = {
+/* ───────── 10천간 기본 성향 및 테마 ───────── */
+const STEM_DATA = {
   갑: {
     theme: "theme-wood",
-    pokemonName: "나무지기",
-    img: `${ARTWORK_BASE}/252.png`,
-    subtitle: "목표를 향해 곧게 뻗어 나가는 조별과제 조장 리더",
     keywords: ["#추진력", "#솔직담백", "#직진리더"],
-    desc: "새 학기 팀플이나 프로젝트를 시작할 때 가장 먼저 앞장서는 에너지를 가졌습니다. 눈치를 보기보다 정면 돌파하는 편이며, 한번 목표를 정하면 밤을 새워서라도 끝까지 밀고 나가는 힘이 있습니다.",
-    hap: { target: "기", label: "천간합 · 갑기합토", reason: "거침없는 추진력을 현실적인 일정표로 다듬어주는 팀플 짝꿍" },
-    sangsaeng: { target: "임", label: "상생 · 수생목", reason: "넓은 시야와 레퍼런스로 아이디어를 채워주는 시험기간 조력자" }
+    desc: "새 학기 팀플이나 프로젝트를 시작할 때 가장 먼저 앞장서는 에너지를 가졌습니다. 눈치를 보기보다 정면 돌파하는 편이며, 한번 목표를 정하면 밤을 새워서라도 끝까지 밀고 나가는 힘이 있습니다."
   },
   을: {
     theme: "theme-wood",
-    pokemonName: "나몰빼미",
-    img: `${ARTWORK_BASE}/722.png`,
-    subtitle: "어떤 팀에서도 제 몫을 해내는 유연한 전략가",
     keywords: ["#섬세함", "#끈기", "#적응력만렙"],
-    desc: "겉으로는 부드럽고 친화력이 좋지만 내면에는 쉽게 꺾이지 않는 단단한 심지가 있습니다. 팀원들의 의견을 조율하고 현실적인 해법을 찾아내는 감각이 뛰어납니다.",
-    hap: { target: "경", label: "천간합 · 을경합금", reason: "유연한 기획에 단단한 결단력과 마감력을 더해주는 환상의 짝" },
-    sangsaeng: { target: "계", label: "상생 · 수생목", reason: "섬세한 직관으로 막막한 시험범위의 핵심을 짚어주는 존재" }
+    desc: "겉으로는 부드럽고 친화력이 좋지만 내면에는 쉽게 꺾이지 않는 단단한 심지가 있습니다. 팀원들의 의견을 조율하고 현실적인 해법을 찾아내는 감각이 뛰어납니다."
   },
   병: {
     theme: "theme-fire",
-    pokemonName: "파이리",
-    img: `${ARTWORK_BASE}/4.png`,
-    subtitle: "어색한 첫 수업 분위기도 녹이는 태양 에너지 센터",
     keywords: ["#분위기메이커", "#긍정에너지", "#발표장인"],
-    desc: "어색한 개강 첫 주나 동아리 모임 분위기를 단숨에 환하게 만드는 매력이 있습니다. 표현력이 풍부해 발표나 대외활동에서 자연스럽게 중심 역할을 맡습니다.",
-    hap: { target: "신", label: "천간합 · 병신합수", reason: "뜨거운 열정에 꼼꼼한 디테일과 PPT 완성도를 입혀주는 짝꿍" },
-    sangsaeng: { target: "갑", label: "상생 · 목생화", reason: "에너지가 방전되지 않도록 든든하게 페이스 맞춰주는 동기" }
+    desc: "어색한 개강 첫 주나 동아리 모임 분위기를 단숨에 환하게 만드는 매력이 있습니다. 표현력이 풍부해 발표나 대외활동에서 자연스럽게 중심 역할을 맡습니다."
   },
   정: {
     theme: "theme-fire",
-    pokemonName: "식스테일",
-    img: `${ARTWORK_BASE}/37.png`,
-    subtitle: "차분함 속에 뜨거운 몰입력을 품은 디테일 장인",
     keywords: ["#집중력", "#감수성", "#반전매력"],
-    desc: "평소에는 차분하고 사려 깊지만, 전공이나 관심 분야에 빠지면 도서관에서 누구보다 뜨거운 집중력을 발휘합니다. 남들이 놓치는 족보 포인트를 잘 짚어냅니다.",
-    hap: { target: "임", label: "천간합 · 정임합목", reason: "깊은 통찰과 섬세한 자료 정리가 만나 A+을 만드는 팀플 짝" },
-    sangsaeng: { target: "을", label: "상생 · 목생화", reason: "지치지 않게 곁에서 커피 한 잔 건네며 힘을 실어주는 친구" }
+    desc: "평소에는 차분하고 사려 깊지만, 전공이나 관심 분야에 빠지면 도서관에서 누구보다 뜨거운 집중력을 발휘합니다. 남들이 놓치는 족보 포인트를 잘 짚어냅니다."
   },
   무: {
     theme: "theme-earth",
-    pokemonName: "잠만보",
-    img: `${ARTWORK_BASE}/143.png`,
-    subtitle: "시험기간에도 흔들리지 않는 묵직한 든든한 버팀목",
     keywords: ["#신뢰감", "#포용력", "#멘탈갑"],
-    desc: "주변의 촉박한 분위기에 쉽게 휘둘리지 않고 자기 페이스를 지킵니다. 스케일이 크고 믿음직스러워 마감 직전 다급한 순간에 친구들이 가장 먼저 의지하는 중심축입니다.",
-    hap: { target: "계", label: "천간합 · 무계합화", reason: "묵직한 안정감에 기발한 기획 아이디어를 더해주는 최고의 짝" },
-    sangsaeng: { target: "병", label: "상생 · 화생토", reason: "활기찬 텐션으로 무기력함을 깨워주는 든든한 캠퍼스 응원군" }
+    desc: "주변의 촉박한 분위기에 쉽게 휘둘리지 않고 자기 페이스를 지킵니다. 스케일이 크고 믿음직스러워 마감 직전 다급한 순간에 친구들이 가장 먼저 의지하는 중심축입니다."
   },
   기: {
     theme: "theme-earth",
-    pokemonName: "이브이",
-    img: `${ARTWORK_BASE}/133.png`,
-    subtitle: "자료 조사부터 정리까지 야무지게 해내는 올라운더",
     keywords: ["#실용주의", "#배려심", "#다재다능"],
-    desc: "현실 감각이 뛰어나고 문서 정리나 실무 능력이 좋습니다. 팀원들을 세심하게 챙기면서도 자신의 분량을 야무지게 완성해 내는 균형 감각을 갖추고 있습니다.",
-    hap: { target: "갑", label: "천간합 · 갑기합토", reason: "큰 그림을 열어주면 빈틈없이 결과물로 완성해 내는 호흡" },
-    sangsaeng: { target: "정", label: "상생 · 화생토", reason: "따뜻한 배려와 섬세한 피드백으로 마음을 채워주는 존재" }
+    desc: "현실 감각이 뛰어나고 문서 정리나 실무 능력이 좋습니다. 팀원들을 세심하게 챙기면서도 자신의 분량을 야무지게 완성해 내는 균형 감각을 갖추고 있습니다."
   },
   경: {
     theme: "theme-metal",
-    pokemonName: "루카리오",
-    img: `${ARTWORK_BASE}/448.png`,
-    subtitle: "역할 분담이 명확하고 의리 있는 단단한 승부사",
     keywords: ["#결단력", "#의리", "#깔끔한일처리"],
-    desc: "기준이 명확하고 옳고 그름이 분명한 성격입니다. 한번 마음먹으면 군더더기 없이 깔끔하게 과제를 끝내며, 맡은 파트에 대한 책임감이 매우 강합니다.",
-    hap: { target: "을", label: "천간합 · 을경합금", reason: "단호한 추진력을 부드럽게 감싸주며 시너지를 내는 짝꿍" },
-    sangsaeng: { target: "무", label: "상생 · 토생금", reason: "예민해질 때마다 묵직하게 멘탈을 잡아주는 든든한 버팀목" }
+    desc: "기준이 명확하고 옳고 그름이 분명한 성격입니다. 한번 마음먹으면 군더더기 없이 깔끔하게 과제를 끝내며, 맡은 파트에 대한 책임감이 매우 강합니다."
   },
   신: {
     theme: "theme-metal",
-    pokemonName: "님피아",
-    img: `${ARTWORK_BASE}/700.png`,
-    subtitle: "예리한 감각으로 퀄리티를 끌어올리는 보석 세공사",
     keywords: ["#완벽주의", "#미적감각", "#날카로운직관"],
-    desc: "섬세하고 정교한 감각을 지녀 PPT 디자인이나 보고서 완성도를 높이는 데 강점이 있습니다. 자기 관리가 철저해 어디서든 세련된 인상을 남깁니다.",
-    hap: { target: "병", label: "천간합 · 병신합수", reason: "예리한 감각을 환하게 빛내주며 텐션을 높여주는 태양 같은 짝" },
-    sangsaeng: { target: "기", label: "상생 · 토생금", reason: "실속 있게 일정을 챙겨주며 능력을 꽃피우게 돕는 조력자" }
+    desc: "섬세하고 정교한 감각을 지녀 PPT 디자인이나 보고서 완성도를 높이는 데 강점이 있습니다. 자기 관리가 철저해 어디서든 세련된 인상을 남깁니다."
   },
   임: {
     theme: "theme-water",
-    pokemonName: "꼬부기",
-    img: `${ARTWORK_BASE}/7.png`,
-    subtitle: "틀에 갇히지 않고 유연하게 돌파하는 캠퍼스 탐험가",
     keywords: ["#아이디어뱅크", "#유연함", "#통찰력"],
-    desc: "고정관념에 얽매이지 않고 새로운 분야를 빠르게 흡수합니다. 상황을 넓게 조망하는 시야가 있어 막막한 과제에서도 의외의 돌파구를 잘 찾아냅니다.",
-    hap: { target: "정", label: "천간합 · 정임합목", reason: "넓은 시야에 섬세한 집중력을 더해 결과를 만드는 환상의 짝" },
-    sangsaeng: { target: "경", label: "상생 · 금생수", reason: "명확한 방향을 잡아주어 시험 공부를 효율적으로 이끄는 존재" }
+    desc: "고정관념에 얽매이지 않고 새로운 분야를 빠르게 흡수합니다. 상황을 넓게 조망하는 시야가 있어 막막한 과제에서도 의외의 돌파구를 잘 찾아냅니다."
   },
   계: {
     theme: "theme-water",
-    pokemonName: "팽도리",
-    img: `${ARTWORK_BASE}/393.png`,
-    subtitle: "조용하지만 강한 직관과 기획력을 지닌 감성파",
     keywords: ["#직관력", "#기획감각", "#섬세한센스"],
-    desc: "상황과 사람의 마음을 읽는 센스가 뛰어납니다. 겉으로 드러내지 않아도 머릿속에서 치밀하게 그림을 그리며, 참신한 아이디어로 팀에 영감을 줍니다.",
-    hap: { target: "무", label: "천간합 · 무계합화", reason: "섬세한 아이디어를 현실적인 결과물로 구현해 주는 든든한 짝" },
-    sangsaeng: { target: "신", label: "상생 · 금생수", reason: "예리한 감각으로 기획의 완성도를 한 단계 높여주는 파트너" }
+    desc: "상황과 사람의 마음을 읽는 센스가 뛰어납니다. 겉으로 드러내지 않아도 머릿속에서 치밀하게 그림을 그리며, 참신한 아이디어로 팀에 영감을 줍니다."
   }
 };
+
+/* ───────── 12지지(일지) 속마음·행동 스타일 ───────── */
+const BRANCH_DATA = {
+  자: {
+    tag: "자(子) 일지 · 밤샘 몰입형",
+    keyword: "#지적호기심",
+    desc: "조용히 혼자 생각을 정리할 때 가장 머리가 잘 돌아가는 타입이에요. 남들 다 자는 새벽 시간에 집중력이 폭발해 레포트나 시험 공부를 단숨에 끝내곤 합니다."
+  },
+  축: {
+    tag: "축(丑) 일지 · 뚝심 완주형",
+    keyword: "#성실끝판왕",
+    desc: "속도가 조금 느려 보여도 한번 맡은 일은 절대 중도 포기하지 않는 뚝심이 있습니다. 학기 말에 가면 결국 가장 탄탄한 결과물을 손에 쥐는 실속파입니다."
+  },
+  인: {
+    tag: "인(寅) 일지 · 개척 스타터형",
+    keyword: "#행동파",
+    desc: "아이디어가 떠오르면 망설이지 않고 바로 실행에 옮기는 에너지가 있습니다. 새로운 동아리나 대외활동에서도 빠르게 판을 키우는 기획형 행동파입니다."
+  },
+  묘: {
+    tag: "묘(卯) 일지 · 센스 조율형",
+    keyword: "#친화력",
+    desc: "주변 분위기 변화를 빠르게 캐치하고 사람 사이를 부드럽게 잇는 감각이 뛰어납니다. 딱딱한 팀플 회의도 유쾌하게 풀어내는 센스를 지녔습니다."
+  },
+  진: {
+    tag: "진(辰) 일지 · 큰그림 설계형",
+    keyword: "#스케일",
+    desc: "작은 디테일에 매몰되기보다 전체 흐름과 방향성을 크게 그리는 타입입니다. 위기 상황에서도 당황하지 않고 대안을 제시하는 듬직한 면모가 있습니다."
+  },
+  사: {
+    tag: "사(巳) 일지 · 전략 탐구형",
+    keyword: "#통찰력",
+    desc: "겉으로는 차분해 보이지만 머릿속에서는 치밀하게 경우의 수를 계산하고 있습니다. 발표 Q&A나 면접처럼 순발력이 필요한 순간에 진가를 발휘합니다."
+  },
+  오: {
+    tag: "오(午) 일지 · 직진 열정형",
+    keyword: "#에너지폭발",
+    desc: "호불호가 분명하고 꽂히는 분야에는 아낌없이 에너지를 쏟습니다. 솔직하고 뒤끝 없는 성격 덕분에 캠퍼스 어디서든 존재감이 뚜렷합니다."
+  },
+  미: {
+    tag: "미(未) 일지 · 온기 케어형",
+    keyword: "#다정함",
+    desc: "주변 사람들의 컨디션과 감정을 세심하게 살피는 따뜻한 마음씨를 가졌습니다. 조용히 팀원들을 챙기며 묵묵히 자기 몫을 다해 신뢰를 쌓습니다."
+  },
+  신: {
+    tag: "신(申) 일지 · 멀티 해결사형",
+    keyword: "#임기응변",
+    desc: "상황 판단이 빠르고 여러 일을 동시에 처리하는 멀티태스킹 능력이 뛰어납니다. 갑작스러운 변수나 마감 압박 속에서도 재치 있게 돌파구를 찾습니다."
+  },
+  유: {
+    tag: "유(酉) 일지 · 디테일 장인형",
+    keyword: "#깔끔정확",
+    desc: "기준이 명확하고 오탈자나 엉성한 마감을 그냥 넘기지 못하는 깔끔한 성격입니다. 자료 조사, 문서 편집, 발표 퀄리티 관리에서 독보적인 실력을 보입니다."
+  },
+  술: {
+    tag: "술(戌) 일지 · 의리 수호자형",
+    keyword: "#책임감",
+    desc: "한번 내 사람이라고 생각하면 끝까지 의리를 지키는 믿음직한 타입입니다. 겉으로 티를 많이 내지 않아도 결정적인 순간에 가장 든든하게 팀을 지킵니다."
+  },
+  해: {
+    tag: "해(亥) 일지 · 유연한 영감형",
+    keyword: "#포용력",
+    desc: "틀에 박힌 방식보다 자유로운 분위기 속에서 창의적인 아이디어를 떠올립니다. 타인의 다름을 잘 받아들이고 깊은 공감 능력을 발휘합니다."
+  }
+};
+
+/* ───────── 60갑자 일주별 고유 포켓몬 (60종) ───────── */
+const PILLAR_POKEMON = {
+  // 갑(甲)
+  갑자: { id: 1, name: "이상해씨", subtitle: "깊은 밤 지혜를 틔워 가장 먼저 싹트는 캠퍼스 새내기" },
+  갑인: { id: 252, name: "나무지기", subtitle: "목표를 향해 곧게 뻗어 나가는 조별과제 직진 리더" },
+  갑진: { id: 389, name: "토대부기", subtitle: "큰 그림을 설계하고 팀 전체를 든든히 이끄는 거목" },
+  갑오: { id: 152, name: "치코리타", subtitle: "밝은 에너지로 어색한 팀 분위기를 녹이는 직진 응원단" },
+  갑신: { id: 387, name: "모부기", subtitle: "돌발 상황에서도 침착하게 돌파구를 뚫는 실전형 리더" },
+  갑술: { id: 650, name: "도치마론", subtitle: "맡은 일은 끝까지 책임지고 완수하는 의리의 개척자" },
+
+  // 을(乙)
+  을축: { id: 43, name: "뚜벅쵸", subtitle: "묵묵히 뿌리를 내리며 끝내 결과를 만들어내는 뚝심파" },
+  을묘: { id: 722, name: "나몰빼미", subtitle: "어떤 팀에서도 제 몫을 해내는 유연한 캠퍼스 전략가" },
+  을사: { id: 495, name: "주리비얀", subtitle: "부드러운 미소 뒤에 치밀한 계산을 품은 스마트 지략가" },
+  을미: { id: 547, name: "엘풍", subtitle: "산뜻한 센스로 팀원들의 마음을 하나로 모으는 분위기 조율사" },
+  을유: { id: 549, name: "드레디어", subtitle: "섬세한 기준과 미적 감각으로 완성도를 높이는 깔끔러" },
+  을해: { id: 270, name: "연꽃몬", subtitle: "어디서든 자연스럽게 스며들어 아이디어를 피우는 감성파" },
+
+  // 병(丙)
+  병자: { id: 155, name: "브케인", subtitle: "평소엔 차분하다가 결정적 순간 불꽃처럼 몰입하는 반전파" },
+  병인: { id: 4, name: "파이리", subtitle: "어색한 첫 수업 분위기도 단숨에 녹이는 태양 에너지 센터" },
+  병진: { id: 6, name: "리자몽", subtitle: "스케일 큰 기획과 압도적 존재감으로 무대를 장악하는 발표왕" },
+  병오: { id: 257, name: "번치코", subtitle: "한번 불붙으면 누구도 말릴 수 없는 한낮의 뜨거운 승부사" },
+  병신: { id: 390, name: "불꽃숭이", subtitle: "재치 넘치는 순발력으로 위기를 기회로 바꾸는 분위기 메이커" },
+  병술: { id: 58, name: "가디", subtitle: "밝은 에너지와 뜨거운 의리로 동기를 챙기는 캠퍼스 수호자" },
+
+  // 정(丁)
+  정축: { id: 607, name: "불켜미", subtitle: "은은하지만 꺼지지 않는 집중력으로 시험기간을 버티는 뚝심파" },
+  정묘: { id: 37, name: "식스테일", subtitle: "차분함 속에 뜨거운 몰입력을 품은 섬세한 디테일 장인" },
+  정사: { id: 653, name: "푸호꼬", subtitle: "예리한 통찰로 교수님의 출제 의도를 꿰뚫는 전략가" },
+  정미: { id: 38, name: "나인테일", subtitle: "따뜻한 배려와 깊은 감수성으로 곁을 지키는 온기 힐러" },
+  정유: { id: 725, name: "냐오불", subtitle: "쿨한 겉모습 뒤에 완벽한 결과물을 준비하는 디테일 승부사" },
+  정해: { id: 136, name: "부스터", subtitle: "포근한 감성과 자유로운 영감을 지닌 밤샘 아이디어 뱅크" },
+
+  // 무(戊)
+  무자: { id: 195, name: "누오", subtitle: "겉은 느긋해 보여도 속으론 핵심을 다 꿰뚫고 있는 실속파" },
+  무인: { id: 232, name: "코리갑", subtitle: "묵직한 추진력으로 막힌 프로젝트를 밀고 나가는 행동대장" },
+  무진: { id: 445, name: "한카리아스", subtitle: "거대한 스케일과 승부욕으로 목표를 쟁취하는 올라운드 에이스" },
+  무오: { id: 143, name: "잠만보", subtitle: "시험기간에도 흔들리지 않는 묵직하고 든든한 멘탈 버팀목" },
+  무신: { id: 246, name: "애버라스", subtitle: "탄탄한 기본기에 빠른 임기응변을 겸비한 숨은 실력자" },
+  무술: { id: 745, name: "루가루암", subtitle: "한번 맺은 약속과 역할을 끝까지 지키는 단단한 의리파" },
+
+  // 기(己)
+  기축: { id: 104, name: "탕구리", subtitle: "조용히 자기 분량을 완벽히 챙기는 성실한 실무 전문가" },
+  기묘: { id: 133, name: "이브이", subtitle: "자료 조사부터 정리까지 야무지게 해내는 만능 올라운더" },
+  기사: { id: 27, name: "모래두지", subtitle: "실속과 효율을 정확히 계산해 빈틈없이 움직이는 전략가" },
+  기미: { id: 179, name: "메리프", subtitle: "포근한 친화력으로 팀원들의 멘탈을 다독이는 온화한 조율자" },
+  기유: { id: 302, name: "깜까미", subtitle: "남들이 놓치는 작은 디테일까지 보석처럼 찾아내는 분석가" },
+  기해: { id: 220, name: "꾸꾸리", subtitle: "편안한 매력으로 주변을 무장해제시키는 감성 실용주의자" },
+
+  // 경(庚)
+  경자: { id: 227, name: "무장조", subtitle: "날카로운 판단력과 밤샘 집중력으로 승부하는 쿨한 전략가" },
+  경인: { id: 403, name: "코링크", subtitle: "망설임 없는 결단력으로 새로운 도전을 이끄는 행동파" },
+  경진: { id: 376, name: "메타그로스", subtitle: "압도적인 논리와 큰 그림으로 팀을 캐리하는 강철 브레인" },
+  경오: { id: 448, name: "루카리오", subtitle: "역할 분담이 명확하고 의리 있는 단단한 캠퍼스 승부사" },
+  경신: { id: 123, name: "스라크", subtitle: "빠른 상황 판단과 깔끔한 일 처리로 마감 시간을 지배하는 해결사" },
+  경술: { id: 304, name: "가보리", subtitle: "원칙과 책임을 목숨처럼 지키는 단단한 신뢰의 아이콘" },
+
+  // 신(辛)
+  신축: { id: 303, name: "입치트", subtitle: "차분한 뚝심으로 완벽한 퀄리티를 벼려내는 내실형 장인" },
+  신묘: { id: 700, name: "님피아", subtitle: "예리한 감각과 센스로 결과물의 완성도를 끌어올리는 아티스트" },
+  신사: { id: 282, name: "가디안", subtitle: "냉철한 통찰과 우아한 카리스마로 팀의 품격을 높이는 설계자" },
+  신미: { id: 175, name: "토게피", subtitle: "섬세한 감수성과 따뜻한 배려를 품은 반짝이는 행운아" },
+  신유: { id: 196, name: "에브이", subtitle: "한 치의 오차도 허용하지 않는 날카로운 직관의 완벽주의자" },
+  신해: { id: 39, name: "푸린", subtitle: "맑은 감성과 유연한 센스로 누구와도 잘 어우러지는 매력파" },
+
+  // 임(壬)
+  임자: { id: 130, name: "갸라도스", subtitle: "깊은 통찰과 폭발적인 추진력을 동시에 품은 거대한 파도" },
+  임인: { id: 7, name: "꼬부기", subtitle: "틀에 갇히지 않고 유연하게 돌파하는 유쾌한 캠퍼스 탐험가" },
+  임진: { id: 131, name: "라프라스", subtitle: "넓은 시야와 포용력으로 팀원들을 목적지까지 이끄는 항해사" },
+  임오: { id: 418, name: "브이젤", subtitle: "유연한 사고에 뜨거운 열정을 더해 거침없이 달리는 행동파" },
+  임신: { id: 54, name: "고라파덕", subtitle: "엉뚱해 보여도 결정적 순간 천재적 아이디어를 터뜨리는 해결사" },
+  임술: { id: 134, name: "샤미드", subtitle: "자유로운 감성과 묵직한 의리를 겸비한 깊이 있는 조력자" },
+
+  // 계(癸)
+  계축: { id: 194, name: "우파", subtitle: "고요한 뚝심으로 자기 페이스를 지키며 스며드는 실속파" },
+  계묘: { id: 183, name: "마릴", subtitle: "맑은 직관과 다정한 센스로 팀에 활력을 불어넣는 아이디어 뱅크" },
+  계사: { id: 197, name: "블래키", subtitle: "조용하지만 치밀한 전략으로 밤에 더 빛나는 미스터리 기획자" },
+  계미: { id: 393, name: "팽도리", subtitle: "따뜻한 감성과 자존심 있는 기획력을 지닌 섬세한 감성파" },
+  계유: { id: 258, name: "물짱이", subtitle: "예리한 관찰력과 깔끔한 정리 실력을 갖춘 똑똑한 전략가" },
+  계해: { id: 79, name: "야돈", subtitle: "여유로운 태도 속에 깊은 영감과 철학을 품은 몽상가" }
+};
+
+function getPokemonInfo(stem, branch) {
+  const key = `${stem}${branch}`;
+  const stemData = STEM_DATA[stem];
+  const branchData = BRANCH_DATA[branch];
+  const poke = PILLAR_POKEMON[key];
+
+  return {
+    theme: stemData.theme,
+    pokemonName: poke.name,
+    img: `${ARTWORK_BASE}/${poke.id}.png`,
+    subtitle: poke.subtitle,
+    keywords: [...stemData.keywords, branchData.keyword],
+    desc: stemData.desc,
+    branchTag: branchData.tag,
+    branchDesc: branchData.desc
+  };
+}
+
+/* ───────── 천지덕합(천간합+지지육합) & 상생·삼합 파트너 계산 ───────── */
+
+const YUKHAP_MAP = [1, 0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+
+const HAP_REASONS = {
+  갑: "거침없는 추진력을 현실적인 일정표로 다듬어주는 천지덕합 짝꿍",
+  을: "유연한 기획에 단단한 결단력과 마감력을 더해주는 천지덕합 짝꿍",
+  병: "뜨거운 열정에 꼼꼼한 디테일과 PPT 완성도를 입혀주는 천지덕합 짝꿍",
+  정: "깊은 통찰과 섬세한 자료 정리가 만나 A+을 만드는 천지덕합 짝꿍",
+  무: "묵직한 안정감에 기발한 기획 아이디어를 더해주는 천지덕합 짝꿍",
+  기: "큰 그림을 열어주면 빈틈없이 결과물로 완성해 내는 천지덕합 짝꿍",
+  경: "단호한 추진력을 부드럽게 감싸주며 시너지를 내는 천지덕합 짝꿍",
+  신: "예리한 감각을 환하게 빛내주며 텐션을 높여주는 천지덕합 짝꿍",
+  임: "넓은 시야에 섬세한 집중력을 더해 결과를 만드는 천지덕합 짝꿍",
+  계: "섬세한 아이디어를 현실적인 결과물로 구현해 주는 천지덕합 짝꿍"
+};
+
+const SANGSAENG_REASONS = {
+  갑: "넓은 시야와 레퍼런스로 아이디어를 채워주는 시험기간 조력자",
+  을: "섬세한 직관으로 막막한 시험범위의 핵심을 짚어주는 조력자",
+  병: "에너지가 방전되지 않도록 든든하게 페이스 맞춰주는 동기",
+  정: "지치지 않게 곁에서 커피 한 잔 건네며 힘을 실어주는 친구",
+  무: "활기찬 텐션으로 무기력함을 깨워주는 든든한 캠퍼스 응원군",
+  기: "따뜻한 배려와 섬세한 피드백으로 마음을 채워주는 조력자",
+  경: "예민해질 때마다 묵직하게 멘탈을 잡아주는 든든한 버팀목",
+  신: "실속 있게 일정을 챙겨주며 능력을 꽃피우게 돕는 조력자",
+  임: "명확한 방향을 잡아주어 시험 공부를 효율적으로 이끄는 조력자",
+  계: "예리한 감각으로 기획의 완성도를 한 단계 높여주는 파트너"
+};
+
+function getPartnerPillars(stemIdx, branchIdx) {
+  const myStem = STEMS[stemIdx];
+
+  // 1. 천지덕합 (천간합 + 지지육합)
+  const hapStemIdx = (stemIdx + 5) % 10;
+  const hapBranchIdx = YUKHAP_MAP[branchIdx];
+  const hapStem = STEMS[hapStemIdx];
+  const hapBranch = BRANCHES[hapBranchIdx];
+  const hapInfo = getPokemonInfo(hapStem, hapBranch);
+
+  // 2. 상생·삼합 (나를 생해주는 천간 + 지지삼합)
+  const sangStemIdx = (stemIdx + 8) % 10;
+  const sangBranchIdx = (branchIdx + 4) % 12;
+  const sangStem = STEMS[sangStemIdx];
+  const sangBranch = BRANCHES[sangBranchIdx];
+  const sangInfo = getPokemonInfo(sangStem, sangBranch);
+
+  return {
+    hap: {
+      pillarText: `${hapStem}${hapBranch}일주`,
+      label: `천지덕합 · ${hapStem}${hapBranch}`,
+      pokemon: hapInfo,
+      reason: HAP_REASONS[myStem]
+    },
+    sangsaeng: {
+      pillarText: `${sangStem}${sangBranch}일주`,
+      label: `상생삼합 · ${sangStem}${sangBranch}`,
+      pokemon: sangInfo,
+      reason: SANGSAENG_REASONS[myStem]
+    }
+  };
+}
 
 function getDayPillar(dateStr) {
   const [year, month, day] = dateStr.split("-").map(Number);
@@ -417,11 +596,12 @@ function parseFriendFromUrl() {
   const stemIdx = STEMS.indexOf(stem);
   const branchIdx = BRANCHES.indexOf(branch);
   if (stemIdx === -1 || branchIdx === -1) return null;
+  if (!PILLAR_POKEMON[fp]) return null;
 
   const rawName = (params.get("fn") || "").trim().slice(0, 10);
   const name = rawName || "친구";
   const pillar = makePillar(stemIdx, branchIdx);
-  const info = RESULT_DATA[stem];
+  const info = getPokemonInfo(stem, branch);
 
   return { name, pillar, info };
 }
@@ -450,7 +630,7 @@ document.getElementById("clear-friend-btn").addEventListener("click", () => {
 });
 
 function isBranchYukHap(b1, b2) {
-  return (b1 === 0 && b2 === 1) || (b1 === 1 && b2 === 0) || (b1 >= 2 && b2 >= 2 && b1 + b2 === 13);
+  return YUKHAP_MAP[b1] === b2;
 }
 
 function calcCompatibility(myPillar, friendPillar, myName, friendName) {
@@ -476,10 +656,14 @@ function calcCompatibility(myPillar, friendPillar, myName, friendName) {
     score = 92;
     headline = "상생 시너지 · 내가 아낌없이 챙겨주게 되는 환상의 후배·동기 케미";
     desc = `${myName}님의 기운이 ${friendName}님의 잠재력을 활짝 열어주는 상생 관계예요. 함께 팀을 이루면 자연스럽게 호흡이 맞고 결과물의 완성도가 쑥쑥 올라갑니다.`;
+  } else if (s1 === s2 && myPillar.branchIdx === friendPillar.branchIdx) {
+    score = 95;
+    headline = "60갑자 쌍둥이 · 생각부터 행동 패턴까지 소름 돋는 소울메이트";
+    desc = `천간과 지지까지 완벽히 일치하는 같은 일주 콤비예요! 말하지 않아도 고민 포인트와 일 처리 속도가 똑같아서 눈빛만 봐도 통하는 환상의 단짝입니다.`;
   } else if (s1 === s2) {
     score = 90;
-    headline = "도플갱어 콤비 · 말 안 해도 취향과 속도가 똑같은 단짝";
-    desc = `타고난 일간 기운이 같아서 개그 코드부터 일 처리 방식까지 소름 돋게 잘 통하는 사이예요. 공강 시간에 함께 수다 떨거나 스터디 메이트로 뭉치면 시간 가는 줄 모릅니다.`;
+    headline = "도플갱어 콤비 · 말 안 해도 취향과 가치관이 통하는 단짝";
+    desc = `타고난 일간 기운이 같아서 개그 코드부터 목표 지향점까지 잘 통하는 사이예요. 공강 시간에 함께 수다 떨거나 스터디 메이트로 뭉치면 시간 가는 줄 모릅니다.`;
   } else if (el1 === el2) {
     score = 87;
     headline = "동기 케미 · 같은 방향을 바라보며 시너지를 내는 파트너";
@@ -639,7 +823,7 @@ form.addEventListener("submit", (e) => {
 
   const pillars = getFourPillars(birthDate, birthTime);
   const pillar = pillars.day;
-  const info = RESULT_DATA[pillar.stem];
+  const info = getPokemonInfo(pillar.stem, pillar.branch);
   latestMyPillar = pillar;
 
   // 사주 명식 + 오행 분포
@@ -676,6 +860,14 @@ form.addEventListener("submit", (e) => {
     `${stemIsYang ? "양(陽)" : "음(陰)"} 일간 · ${genderText} · ${yy.tag}`;
   document.getElementById("yinyang-text").textContent = yy.text;
 
+  // 일지(지지) 성향 세팅
+  const branchTagEl = document.getElementById("branch-tag");
+  const branchTextEl = document.getElementById("branch-text");
+  if (branchTagEl && branchTextEl) {
+    branchTagEl.textContent = info.branchTag;
+    branchTextEl.textContent = info.branchDesc;
+  }
+
   setPokemonImage(document.getElementById("result-img"), info.img, info.pokemonName);
 
   document.getElementById("result-user").textContent =
@@ -694,21 +886,24 @@ form.addEventListener("submit", (e) => {
   // 2. 친구 공유 링크 접속 시 궁합 카드 세팅
   renderFriendCompatibility(pillar, info, userName);
 
-  // 3. 천간합 파트너 세팅
-  const hapPokemon = RESULT_DATA[info.hap.target];
-  document.getElementById("hap-badge").textContent = info.hap.label;
-  setPokemonImage(document.getElementById("hap-img"), hapPokemon.img, hapPokemon.pokemonName);
-  document.getElementById("hap-name").textContent = hapPokemon.pokemonName;
-  document.getElementById("hap-reason").textContent = info.hap.reason;
+  // 3. 캠퍼스 파트너 세팅 (천지덕합 & 상생삼합)
+  const partners = getPartnerPillars(pillar.stemIdx, pillar.branchIdx);
 
-  // 4. 오행 상생 파트너 세팅
-  const sangsaengPokemon = RESULT_DATA[info.sangsaeng.target];
-  document.getElementById("sangsaeng-badge").textContent = info.sangsaeng.label;
-  setPokemonImage(document.getElementById("sangsaeng-img"), sangsaengPokemon.img, sangsaengPokemon.pokemonName);
-  document.getElementById("sangsaeng-name").textContent = sangsaengPokemon.pokemonName;
-  document.getElementById("sangsaeng-reason").textContent = info.sangsaeng.reason;
+  document.getElementById("hap-badge").textContent = partners.hap.label;
+  setPokemonImage(document.getElementById("hap-img"), partners.hap.pokemon.img, partners.hap.pokemon.pokemonName);
+  document.getElementById("hap-name").textContent = partners.hap.pokemon.pokemonName;
+  document.getElementById("hap-reason").textContent = partners.hap.reason;
 
-  // 5. 오늘의 캠퍼스 운세 세팅
+  document.getElementById("sangsaeng-badge").textContent = partners.sangsaeng.label;
+  setPokemonImage(
+    document.getElementById("sangsaeng-img"),
+    partners.sangsaeng.pokemon.img,
+    partners.sangsaeng.pokemon.pokemonName
+  );
+  document.getElementById("sangsaeng-name").textContent = partners.sangsaeng.pokemon.pokemonName;
+  document.getElementById("sangsaeng-reason").textContent = partners.sangsaeng.reason;
+
+  // 4. 오늘의 캠퍼스 운세 세팅
   renderTodayFortune(pillar.stemIdx);
 
   // 화면 전환

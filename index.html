@@ -219,18 +219,48 @@
     <section id="result-section" class="card hidden">
       <div id="result-card" class="result-box">
         <div class="result-hero">
-          <div class="result-hero-top">
-            <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
-            <span id="result-dex-no" class="dex-tag">No.448</span>
+          <!-- 2. 결과 화면 -->
+    <section id="result-section" class="card hidden">
+      <div id="result-card" class="result-box">
+        <div class="result-hero">
+          <!-- 도감 상단 렌즈 & 3색 LED + 일주/도감번호 -->
+          <div class="pokedex-top-bar">
+            <div class="pokedex-lights" aria-hidden="true">
+              <span class="pokedex-lens"></span>
+              <span class="pokedex-led led-red"></span>
+              <span class="pokedex-led led-yellow"></span>
+              <span class="pokedex-led led-green"></span>
+            </div>
+            <div class="result-hero-top">
+              <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
+              <span id="result-dex-no" class="dex-tag">No.448</span>
+            </div>
           </div>
-          <div class="result-img-stage">
-            <img id="result-img" class="result-img float-slow" src="" alt="내 포켓몬 이미지" crossorigin="anonymous" />
+
+          <!-- 도감 회색 액정 스크린 -->
+          <div class="pokedex-screen-bezel">
+            <div class="pokedex-screen-dots" aria-hidden="true">
+              <span></span><span></span>
+            </div>
+            <div class="result-img-stage">
+              <img id="result-img" class="result-img float-slow" src="" alt="내 포켓몬 이미지" crossorigin="anonymous" />
+            </div>
+            <div class="pokedex-screen-bottom" aria-hidden="true">
+              <span class="pokedex-rec-dot"></span>
+              <div class="pokedex-speaker">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
           </div>
-          <p id="result-user" class="user-label">당신의 파트너 포켓몬</p>
-          <h2 id="result-title">루카리오</h2>
-          <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
-          <p id="result-birth" class="birth-info"></p>
-          <div id="result-keywords" class="keyword-list"></div>
+
+          <!-- 가독성 높은 하얀색 텍스트 박스 -->
+          <div class="pokedex-info-box">
+            <p id="result-user" class="user-label">당신의 파트너 포켓몬</p>
+            <h2 id="result-title">루카리오</h2>
+            <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
+            <p id="result-birth" class="birth-info"></p>
+            <div id="result-keywords" class="keyword-list"></div>
+          </div>
         </div>
 
         <div class="result-body">

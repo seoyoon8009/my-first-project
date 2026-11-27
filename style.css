@@ -412,44 +412,60 @@ select:focus {
 
 .result-hero {
   position: relative;
+  overflow: hidden;/* ── 결과 카드 (상단 도감 액정 + 하단 깔끔한 본문 분리) ── */
+.result-box {
+  border-radius: 20px;
   overflow: hidden;
-  background: #dc2626;
-  border-left: 12px solid #b91c1c;
-  border-bottom: 3px solid #1e293b;
-  padding: 16px 16px 18px;
-  text-align: center;
+  border: 2.5px solid #1e293b;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
 }
 
-/* 도감 상단 렌즈 & LED 바 */
+.theme-wood { --hero-bg: linear-gradient(135deg, #dcfce7, #bbf7d0); --accent: #15803d; }
+.theme-fire { --hero-bg: linear-gradient(135deg, #fee2e2, #fed7aa); --accent: #c2410c; }
+.theme-earth { --hero-bg: linear-gradient(135deg, #fef3c7, #fde68a); --accent: #b45309; }
+.theme-metal { --hero-bg: linear-gradient(135deg, #e2e8f0, #cbd5e1); --accent: #334155; }
+.theme-water { --hero-bg: linear-gradient(135deg, #dbeafe, #bae6fd); --accent: #0369a1; }
+
+/* 상단 빨간 도감 프레임 (액정 영역만) */
+.result-hero {
+  position: relative;
+  overflow: hidden;
+  background: #dc2626;
+  border-left: 10px solid #b91c1c;
+  border-bottom: 2.5px solid #1e293b;
+  padding: 14px 16px 16px;
+}
+
 .pokedex-top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #991b1b;
 }
 
 .pokedex-lights {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: 5px;
   flex-shrink: 0;
 }
 
 .pokedex-lens {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: radial-gradient(circle at 32% 32%, #93c5fd 0%, #2563eb 55%, #1e3a8a 100%);
-  border: 3px solid #f8fafc;
+  border: 2.5px solid #f8fafc;
   box-shadow: 0 0 0 2px #1e293b;
 }
 
 .pokedex-led {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   border: 1.5px solid #1e293b;
   margin-top: 2px;
@@ -477,13 +493,12 @@ select:focus {
   border: 2px solid #1e293b;
 }
 
-/* 도감 회색 액정 베젤 */
+/* 회색 도감 액정 베젤 */
 .pokedex-screen-bezel {
   background: #e2e8f0;
   border: 2.5px solid #1e293b;
-  border-radius: 14px 14px 14px 28px;
-  padding: 8px 14px 10px;
-  margin-bottom: 12px;
+  border-radius: 12px 12px 12px 24px;
+  padding: 8px 14px 9px;
   box-shadow: inset 0 -3px 0 #94a3b8;
 }
 
@@ -507,7 +522,7 @@ select:focus {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 168px;
+  height: 176px;
   background: var(--hero-bg, #e8f3ff);
   border: 2px solid #1e293b;
   border-radius: 8px;
@@ -541,8 +556,8 @@ select:focus {
 }
 
 .result-img {
-  width: 132px;
-  height: 132px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
 }
 
@@ -550,13 +565,13 @@ select:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 7px;
   padding: 0 6px;
 }
 
 .pokedex-rec-dot {
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: #ef4444;
   border: 1.5px solid #1e293b;
@@ -576,25 +591,45 @@ select:focus {
   border-radius: 2px;
 }
 
-/* 가독성 확보용 하얀색 정보 박스 */
-.pokedex-info-box {
+/* 하단 하얀색 본문 영역 (여백 복구) */
+.result-body {
+  padding: 22px 20px 24px;
   background: #ffffff;
-  border: 2.5px solid #1e293b;
-  border-radius: 14px;
-  padding: 14px 12px;
-  box-shadow: inset 0 -2px 0 #e2e8f0;
+}
+
+.result-title-area {
+  text-align: center;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .user-label {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 800;
   color: var(--accent, var(--primary));
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
-#result-title { font-size: 25px; font-weight: 800; color: #191f28; margin-bottom: 4px; }
-.result-sub { font-size: 13.5px; font-weight: 700; color: #333d4b; margin-bottom: 6px; }
-.birth-info { font-size: 12px; color: #64748b; margin-bottom: 10px; }
+#result-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #191f28;
+  margin-bottom: 6px;
+}
+
+.result-sub {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333d4b;
+  margin-bottom: 6px;
+}
+
+.birth-info {
+  font-size: 12.5px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
 
 .keyword-list {
   display: flex;
@@ -604,12 +639,12 @@ select:focus {
 }
 
 .keyword-chip {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   background: #f8fafc;
   color: var(--accent, #1e293b);
-  border: 1.5px solid #cbd5e1;
-  padding: 3px 9px;
+  border: 1px solid #e2e8f0;
+  padding: 4px 11px;
   border-radius: 999px;
 }
 

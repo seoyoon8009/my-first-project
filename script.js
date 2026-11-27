@@ -1284,12 +1284,12 @@ saveImgBtn.addEventListener("click", async () => {
     if (!audioCtx) return;
     const now = audioCtx.currentTime + 0.05;
     const notes = [
-      { freq: 987.77, time: 0.00, dur: 0.4 }, // B5 (딴)
-      { freq: 987.77, time: 0.24, dur: 0.4 }, // B5 (딴)
-      { freq: 987.77, time: 0.48, dur: 0.2 }, // B5 (딴)
-      { freq: 830.61, time: 0.72, dur: 0.2 }, // G#5 (따)
-      { freq: 1318.51, time: 0.84, dur: 0.6 } // E6 (란~~)
-    ];
+  { freq: 987.77,  time: 0.00, dur: 0.34 }, // B5 (딴 - 1박)
+  { freq: 987.77,  time: 0.40, dur: 0.34 }, // B5 (딴 - 2박)
+  { freq: 987.77,  time: 0.80, dur: 0.17 }, // B5 (딴 - 3박, 여기서 빨라짐)
+  { freq: 830.61,  time: 1.00, dur: 0.17 }, // G#5 (따 - 3박 반 엇박)
+  { freq: 1318.51, time: 1.20, dur: 0.65 }  // E6 (란~~ - 4박 마무리)
+];
     notes.forEach((n) => playTone(n.freq, now + n.time, n.dur, 0.095, "triangle"));
   }
 

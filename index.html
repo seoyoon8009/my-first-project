@@ -13,7 +13,9 @@
 <body>
   <main class="app-container">
     <!-- 1. 입력 화면 -->
-    <div class="hero-poke-row" aria-hidden="true">
+    <section id="input-section" class="card fade-in">
+      <div class="hero-intro">
+        <div class="hero-poke-row" aria-hidden="true">
           <!-- 1. 몬스터볼 (도트) -->
           <svg class="hero-mini-poke float-1" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
             <rect x="5" y="1" width="6" height="1" fill="#1e293b"/>
@@ -56,15 +58,11 @@
             <rect x="5" y="14" width="6" height="1" fill="#1e293b"/>
           </svg>
         </div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="" class="hero-mini-poke float-1" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png" alt="" class="hero-mini-poke float-2" />
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png" alt="" class="hero-mini-poke float-3" />
-        </div>
         <span class="badge">60갑자 TALENT &amp; POKEMON SAJU</span>
         <h1>나의 파트너 포켓몬 찾기</h1>
         <p class="subtitle">생년월일시로 알아보는 내 타고난 무기와<br />대박 날 추천 진로·시너지 파트너 궁합</p>
       </div>
-
+      
       <!-- 모드 전환 탭 -->
       <div class="mode-tabs" role="tablist" aria-label="테스트 모드 선택">
         <button type="button" id="tab-solo" class="mode-tab is-active" role="tab" aria-selected="true">

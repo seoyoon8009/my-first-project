@@ -218,9 +218,7 @@
     <!-- 2. 결과 화면 -->
     <section id="result-section" class="card hidden">
       <div id="result-card" class="result-box">
-        <div class="result-hero">
-          <div id="result-card" class="result-box">
-        <!-- 상단: 포켓몬 액정 화면만 빨간 도감 프레임으로 구성 -->
+        <!-- 상단: 빨간 도감 프레임 (액정 스크린 + 하얀 이름·키워드 박스 통합) -->
         <div class="result-hero">
           <div class="pokedex-top-bar">
             <div class="pokedex-lights" aria-hidden="true">
@@ -235,6 +233,7 @@
             </div>
           </div>
 
+          <!-- 회색 액정 스크린 (홀로그램 광택 포함) -->
           <div class="pokedex-screen-bezel">
             <div class="pokedex-screen-dots" aria-hidden="true">
               <span></span><span></span>
@@ -249,21 +248,8 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 하단: 원래대로 깔끔하고 여유 있는 하얀색 결과 본문 -->
-        <div class="result-body">
-          <div class="result-title-area">
-            <p id="result-user" class="user-label">당신의 파트너 포켓몬</p>
-            <h2 id="result-title">루카리오</h2>
-            <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
-            <p id="result-birth" class="birth-info"></p>
-            <div id="result-keywords" class="keyword-list"></div>
-          </div>
-
-          <p id="result-desc" class="result-desc"></p>
-
-          <!-- 가독성 높은 하얀색 텍스트 박스 -->
+          <!-- 도감 하단 하얀색 이름·키워드 박스 -->
           <div class="pokedex-info-box">
             <p id="result-user" class="user-label">당신의 파트너 포켓몬</p>
             <h2 id="result-title">루카리오</h2>
@@ -273,6 +259,7 @@
           </div>
         </div>
 
+        <!-- 하단: 여유 있는 여백의 상세 풀이 본문 -->
         <div class="result-body">
           <p id="result-desc" class="result-desc"></p>
 

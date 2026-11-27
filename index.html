@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>나의 파트너 포켓몬 테스트 · 60갑자 캠퍼스 사주</title>
+  <title>나의 파트너 포켓몬 테스트 · 60갑자 타고난 강점 & 적성 사주</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="나의 파트너 포켓몬 찾기 · 60갑자 캠퍼스 사주" />
-  <meta property="og:description" content="생년월일시로 알아보는 내 60갑자 파트너 포켓몬과 환상의 팀플·우정 궁합 테스트!" />
+  <meta property="og:title" content="나의 파트너 포켓몬 찾기 · 60갑자 강점 & 적성 사주" />
+  <meta property="og:description" content="생년월일시로 알아보는 내 타고난 재능, 대박 날 추천 분야와 시너지 파트너!" />
   <meta property="og:image" content="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -20,15 +20,15 @@
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png" alt="" class="hero-mini-poke float-2" />
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png" alt="" class="hero-mini-poke float-3" />
         </div>
-        <span class="badge">60갑자 CAMPUS POKEMON SAJU</span>
+        <span class="badge">60갑자 TALENT &amp; POKEMON SAJU</span>
         <h1>나의 파트너 포켓몬 찾기</h1>
-        <p class="subtitle">생년월일시로 알아보는 60갑자 내 포켓몬과<br />환상의 팀플 짝꿍·오늘의 캠퍼스 운세</p>
+        <p class="subtitle">생년월일시로 알아보는 내 타고난 무기와<br />대박 날 추천 진로·시너지 파트너 궁합</p>
       </div>
 
       <!-- 모드 전환 탭 -->
       <div class="mode-tabs" role="tablist" aria-label="테스트 모드 선택">
         <button type="button" id="tab-solo" class="mode-tab is-active" role="tab" aria-selected="true">
-          ✨ 내 파트너 찾기
+          ✨ 내 적성 &amp; 파트너 찾기
         </button>
         <button type="button" id="tab-duo" class="mode-tab" role="tab" aria-selected="false">
           ⚡ 둘이서 바로 궁합
@@ -122,7 +122,7 @@
 
         <!-- 둘이서 바로 궁합 모드일 때 열리는 상대방 입력 블록 -->
         <div id="duo-fields" class="person-block person-block-partner hidden">
-          <p class="person-block-title">⚡ 상대방(친구·최애·짝꿍) 정보</p>
+          <p class="person-block-title">⚡ 상대방(친구·동료·짝꿍) 정보</p>
 
           <div class="form-group">
             <label for="friend-name">상대방 이름 또는 별명</label>
@@ -165,8 +165,8 @@
     <!-- 1.5. 사주 풀이 로딩 화면 -->
     <section id="loading-section" class="card loading-card hidden" aria-live="polite">
       <div class="pokeball-spinner" aria-hidden="true"></div>
-      <h2 class="loading-title">사주 명식 분석 중...</h2>
-      <p id="loading-step-text" class="loading-step">60갑자 일주와 오행 기운을 계산하고 있어요</p>
+      <h2 class="loading-title">타고난 기운과 적성 분석 중...</h2>
+      <p id="loading-step-text" class="loading-step">60갑자 일주와 사주 명식을 계산하고 있어요</p>
       <div class="loading-track">
         <div id="loading-bar-fill" class="loading-fill"></div>
       </div>
@@ -193,6 +193,16 @@
         <div class="result-body">
           <p id="result-desc" class="result-desc"></p>
 
+          <!-- 대박 날 추천 분야 & 직무 적성 -->
+          <div class="career-section">
+            <div class="career-header">
+              <p class="partner-section-title">🎯 이 기운으로 대박 날 추천 분야 &amp; 직무</p>
+              <span class="career-badge">타고난 적성</span>
+            </div>
+            <div id="career-chips" class="career-chips"></div>
+            <p id="career-desc" class="career-desc"></p>
+          </div>
+
           <div class="yinyang-box">
             <span id="yinyang-tag" class="yinyang-tag"></span>
             <p id="yinyang-text" class="yinyang-text"></p>
@@ -203,27 +213,27 @@
             <p id="branch-text" class="yinyang-text"></p>
           </div>
 
-          <!-- 캠퍼스 능력치 스탯 게이지 -->
+          <!-- 타고난 잠재력 스탯 게이지 -->
           <div class="stats-section">
-            <p class="partner-section-title">캠퍼스 생활 능력치</p>
+            <p class="partner-section-title">타고난 잠재력 능력치</p>
             <div class="stats-grid">
               <div class="stat-row">
-                <span class="stat-label">과제 추진력</span>
+                <span class="stat-label">실행·추진력</span>
                 <div class="stat-track"><div id="stat-drive" class="stat-fill"></div></div>
                 <span id="stat-drive-val" class="stat-val">92</span>
               </div>
               <div class="stat-row">
-                <span class="stat-label">디테일·정리</span>
+                <span class="stat-label">디테일·전문성</span>
                 <div class="stat-track"><div id="stat-detail" class="stat-fill"></div></div>
                 <span id="stat-detail-val" class="stat-val">85</span>
               </div>
               <div class="stat-row">
-                <span class="stat-label">팀플 친화력</span>
+                <span class="stat-label">소통·조율력</span>
                 <div class="stat-track"><div id="stat-social" class="stat-fill"></div></div>
                 <span id="stat-social-val" class="stat-val">88</span>
               </div>
               <div class="stat-row">
-                <span class="stat-label">시험 멘탈력</span>
+                <span class="stat-label">멘탈·회복력</span>
                 <div class="stat-track"><div id="stat-mental" class="stat-fill"></div></div>
                 <span id="stat-mental-val" class="stat-val">95</span>
               </div>
@@ -233,7 +243,7 @@
           <!-- 친구 궁합 카드 -->
           <div id="friend-compat-section" class="compat-section hidden">
             <div class="compat-header">
-              <p class="partner-section-title">우리 둘의 팀플·우정 궁합</p>
+              <p class="partner-section-title">우리 둘의 시너지·일·우정 궁합</p>
               <span id="compat-score-badge" class="compat-score">100점</span>
             </div>
             <div class="compat-duo">
@@ -262,12 +272,12 @@
             <p id="element-summary" class="element-summary"></p>
           </div>
 
-          <!-- 캠퍼스 파트너 포켓몬 -->
+          <!-- 시너지 파트너 포켓몬 -->
           <div class="partner-section">
-            <p class="partner-section-title">나와 찰떡궁합 캠퍼스 파트너</p>
+            <p class="partner-section-title">나와 시너지 터지는 인생·작업 파트너</p>
             <div class="partner-grid">
               <div class="partner-card">
-                <span class="partner-role">환상의 팀플 짝꿍</span>
+                <span class="partner-role">환상의 프로젝트 짝꿍</span>
                 <span id="hap-badge" class="partner-badge badge-hap">천지덕합</span>
                 <img id="hap-img" class="partner-img" src="" alt="천지덕합 파트너" crossorigin="anonymous" />
                 <strong id="hap-name" class="partner-name">나몰빼미</strong>
@@ -275,7 +285,7 @@
               </div>
 
               <div class="partner-card">
-                <span class="partner-role">시험기간 멘탈 조력자</span>
+                <span class="partner-role">슬럼프 극복 멘탈 조력자</span>
                 <span id="sangsaeng-badge" class="partner-badge badge-sangsaeng">상생삼합</span>
                 <img id="sangsaeng-img" class="partner-img" src="" alt="상생삼합 파트너" crossorigin="anonymous" />
                 <strong id="sangsaeng-name" class="partner-name">잠만보</strong>
@@ -284,10 +294,10 @@
             </div>
           </div>
 
-          <!-- 오늘의 캠퍼스 운세 -->
+          <!-- 오늘의 데일리 운세 -->
           <div class="fortune-section">
             <div class="fortune-header">
-              <p class="partner-section-title">오늘의 캠퍼스 기운 &amp; 운세</p>
+              <p class="partner-section-title">오늘의 기운 &amp; 데일리 운세</p>
               <span id="today-pillar-tag" class="today-tag"></span>
             </div>
             <p id="fortune-overall" class="fortune-overall"></p>
@@ -295,7 +305,7 @@
             <div class="fortune-list">
               <div class="fortune-item">
                 <div class="fortune-item-top">
-                  <span class="fortune-cat">📚 학점·과제운</span>
+                  <span class="fortune-cat">📚 학업·커리어운</span>
                   <span id="fortune-study-badge" class="fortune-badge"></span>
                 </div>
                 <p id="fortune-study-text" class="fortune-text"></p>
@@ -303,7 +313,7 @@
 
               <div class="fortune-item">
                 <div class="fortune-item-top">
-                  <span class="fortune-cat">💸 알바·지갑운</span>
+                  <span class="fortune-cat">💸 재물·수입운</span>
                   <span id="fortune-money-badge" class="fortune-badge"></span>
                 </div>
                 <p id="fortune-money-text" class="fortune-text"></p>
@@ -311,7 +321,7 @@
 
               <div class="fortune-item">
                 <div class="fortune-item-top">
-                  <span class="fortune-cat">💘 연애·인간관계 운</span>
+                  <span class="fortune-cat">💘 연애·인간관계운</span>
                   <span id="fortune-love-badge" class="fortune-badge"></span>
                 </div>
                 <p id="fortune-love-text" class="fortune-text"></p>
@@ -319,7 +329,7 @@
 
               <div class="fortune-item">
                 <div class="fortune-item-top">
-                  <span class="fortune-cat">☕ 공강·휴식운</span>
+                  <span class="fortune-cat">☕ 휴식·컨디션운</span>
                   <span id="fortune-rest-badge" class="fortune-badge"></span>
                 </div>
                 <p id="fortune-rest-text" class="fortune-text"></p>

@@ -14,6 +14,11 @@
   <main class="app-container">
     <!-- 1. 입력 화면 -->
     <section id="input-section" class="card fade-in">
+      <div class="sound-bar">
+        <button type="button" id="sound-toggle-btn" class="sound-toggle" aria-pressed="true">
+          🔊 8비트 효과음 ON
+        </button>
+      </div>
       <div class="hero-intro">
         <div class="hero-poke-row" aria-hidden="true">
           <!-- 1. 몬스터볼 (도트) -->
@@ -359,20 +364,24 @@
 
               <div class="fortune-item">
                 <div class="fortune-item-top">
-                  <span class="fortune-cat">💘 연애·인간관계운</span>
-                  <span id="fortune-love-badge" class="fortune-badge"></span>
-                </div>
-                <p id="fortune-love-text" class="fortune-text"></p>
-              </div>
-
-              <div class="fortune-item">
-                <div class="fortune-item-top">
                   <span class="fortune-cat">☕ 휴식·컨디션운</span>
                   <span id="fortune-rest-badge" class="fortune-badge"></span>
                 </div>
                 <p id="fortune-rest-text" class="fortune-text"></p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- 저장 이미지 전용 트레이너 ID & 도감 바코드 푸터 -->
+        <div class="dex-card-footer">
+          <div class="dex-footer-info">
+            <span class="dex-id-label">TRAINER ID No. <strong id="trainer-id-num">000000</strong></span>
+            <span id="dex-issue-date" class="dex-issue-date">POKÉDEX SAJU LAB · 2026</span>
+          </div>
+          <div class="dex-barcode-wrap" aria-hidden="true">
+            <div class="dex-barcode"></div>
+            <span class="dex-serial">60-GAPJA // SYNERGY-DEX</span>
           </div>
         </div>
       </div>

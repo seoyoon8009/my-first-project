@@ -395,24 +395,7 @@ select:focus {
   transition: width 0.4s ease;
 }
 
-/* ── 결과 카드 (포켓몬 도감 프레임) ── */
-.result-box {
-  border-radius: 18px;
-  overflow: hidden;
-  border: 3px solid #1e293b;
-  background: #fff;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
-}
-
-.theme-wood { --hero-bg: linear-gradient(135deg, #dcfce7, #bbf7d0); --accent: #15803d; }
-.theme-fire { --hero-bg: linear-gradient(135deg, #fee2e2, #fed7aa); --accent: #c2410c; }
-.theme-earth { --hero-bg: linear-gradient(135deg, #fef3c7, #fde68a); --accent: #b45309; }
-.theme-metal { --hero-bg: linear-gradient(135deg, #e2e8f0, #cbd5e1); --accent: #334155; }
-.theme-water { --hero-bg: linear-gradient(135deg, #dbeafe, #bae6fd); --accent: #0369a1; }
-
-.result-hero {
-  position: relative;
-  overflow: hidden;/* ── 결과 카드 (상단 도감 액정 + 하단 깔끔한 본문 분리) ── */
+/* ── 결과 카드 (상단 빨간 도감 프레임 + 하단 깔끔한 본문) ── */
 .result-box {
   border-radius: 20px;
   overflow: hidden;
@@ -427,14 +410,14 @@ select:focus {
 .theme-metal { --hero-bg: linear-gradient(135deg, #e2e8f0, #cbd5e1); --accent: #334155; }
 .theme-water { --hero-bg: linear-gradient(135deg, #dbeafe, #bae6fd); --accent: #0369a1; }
 
-/* 상단 빨간 도감 프레임 (액정 영역만) */
 .result-hero {
   position: relative;
   overflow: hidden;
   background: #dc2626;
   border-left: 10px solid #b91c1c;
   border-bottom: 2.5px solid #1e293b;
-  padding: 14px 16px 16px;
+  padding: 14px 16px 18px;
+  text-align: center;
 }
 
 .pokedex-top-bar {
@@ -499,6 +482,7 @@ select:focus {
   border: 2.5px solid #1e293b;
   border-radius: 12px 12px 12px 24px;
   padding: 8px 14px 9px;
+  margin-bottom: 12px;
   box-shadow: inset 0 -3px 0 #94a3b8;
 }
 
@@ -522,7 +506,7 @@ select:focus {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 176px;
+  height: 172px;
   background: var(--hero-bg, #e8f3ff);
   border: 2px solid #1e293b;
   border-radius: 8px;
@@ -556,8 +540,8 @@ select:focus {
 }
 
 .result-img {
-  width: 140px;
-  height: 140px;
+  width: 136px;
+  height: 136px;
   object-fit: contain;
 }
 
@@ -591,44 +575,41 @@ select:focus {
   border-radius: 2px;
 }
 
-/* 하단 하얀색 본문 영역 (여백 복구) */
-.result-body {
-  padding: 22px 20px 24px;
+/* 도감 하단 하얀색 이름·키워드 박스 */
+.pokedex-info-box {
   background: #ffffff;
-}
-
-.result-title-area {
-  text-align: center;
-  padding-bottom: 18px;
-  margin-bottom: 18px;
-  border-bottom: 1px solid #f1f5f9;
+  border: 2.5px solid #1e293b;
+  border-radius: 14px;
+  padding: 15px 14px 16px;
+  box-shadow: inset 0 -2px 0 #e2e8f0;
 }
 
 .user-label {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--accent, var(--primary));
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 #result-title {
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 800;
   color: #191f28;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .result-sub {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #333d4b;
   margin-bottom: 6px;
+  word-break: keep-all;
 }
 
 .birth-info {
-  font-size: 12.5px;
+  font-size: 12px;
   color: #64748b;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
 }
 
 .keyword-list {
@@ -639,13 +620,27 @@ select:focus {
 }
 
 .keyword-chip {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   background: #f8fafc;
   color: var(--accent, #1e293b);
-  border: 1px solid #e2e8f0;
-  padding: 4px 11px;
+  border: 1.5px solid #cbd5e1;
+  padding: 3px 10px;
   border-radius: 999px;
+}
+
+/* 하단 상세 풀이 본문 (여백 유지) */
+.result-body {
+  padding: 22px 20px 24px;
+  background: #ffffff;
+}
+
+.result-desc {
+  font-size: 14px;
+  color: #333d4b;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  word-break: keep-all;
 }
 
 /* ── 대박 날 추천 분야 & 직무 적성 ── */
@@ -699,6 +694,7 @@ select:focus {
   font-size: 13px;
   color: #334155;
   line-height: 1.55;
+  word-break: keep-all;
 }
 
 .yinyang-box {
@@ -720,7 +716,7 @@ select:focus {
 }
 
 .branch-tag { color: #7c3aed; background: #f3e8ff; }
-.yinyang-text { font-size: 13px; color: #4e5968; }
+.yinyang-text { font-size: 13px; color: #4e5968; word-break: keep-all; }
 
 /* ── 능력치 게이지 (포켓몬 HP 바 스타일) ── */
 .stats-section,
@@ -791,6 +787,7 @@ select:focus {
   text-align: right;
   color: #1e293b;
 }
+
 /* ── 둘이서 궁합 카드 ── */
 .compat-section {
   background: #f8fbff;
@@ -835,7 +832,7 @@ select:focus {
 .compat-member-name { font-size: 12.5px; font-weight: 700; }
 .compat-heart { font-size: 20px; }
 .compat-headline { font-size: 13.5px; font-weight: 800; color: var(--primary-dark); margin-bottom: 4px; }
-.compat-desc { font-size: 13px; color: #4e5968; }
+.compat-desc { font-size: 13px; color: #4e5968; word-break: keep-all; }
 
 /* ── 사주 명식 & 오행 ── */
 .pillar-table { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
@@ -878,7 +875,6 @@ select:focus {
   transition: width 0.6s ease;
 }
 
-/* 오행 막대바 전용 진한 색상 */
 .el-bar.el-wood  { background: #22c55e; }
 .el-bar.el-fire  { background: #ef4444; }
 .el-bar.el-earth { background: #f59e0b; }
@@ -894,6 +890,7 @@ select:focus {
   background: #f8fafc;
   padding: 10px 12px;
   border-radius: 10px;
+  word-break: keep-all;
 }
 
 /* ── 파트너 카드 ── */
@@ -923,7 +920,7 @@ select:focus {
 .badge-sangsaeng { background: #dcfce7; color: #15803d; }
 .partner-img { display: block; width: 72px; height: 72px; object-fit: contain; margin: 4px auto 6px; }
 .partner-name { display: block; font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-.partner-reason { font-size: 12px; color: #4e5968; line-height: 1.45; }
+.partner-reason { font-size: 12px; color: #4e5968; line-height: 1.45; word-break: keep-all; }
 
 /* ── 오늘의 운세 ── */
 .fortune-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -936,7 +933,7 @@ select:focus {
   padding: 3px 8px;
   border-radius: 999px;
 }
-.fortune-overall { font-size: 13.5px; font-weight: 600; color: #333d4b; margin-bottom: 12px; }
+.fortune-overall { font-size: 13.5px; font-weight: 600; color: #333d4b; margin-bottom: 12px; word-break: keep-all; }
 .fortune-list { display: flex; flex-direction: column; gap: 8px; }
 .fortune-item { background: #f8fafc; border-radius: 12px; padding: 11px 12px; }
 .fortune-item-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
@@ -946,27 +943,37 @@ select:focus {
 .badge-good { background: #e8f3ff; color: #1b64da; }
 .badge-steady { background: #f1f5f9; color: #475569; }
 .badge-care { background: #fef3c7; color: #b45309; }
-.fortune-text { font-size: 12.5px; color: #4e5968; }
+.fortune-text { font-size: 12.5px; color: #4e5968; word-break: keep-all; }
 
 /* ── 하단 버튼 및 푸터 ── */
 .action-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
 .copy-msg { margin-top: 10px; text-align: center; font-size: 13px; font-weight: 600; color: var(--primary); }
+
 .app-footer {
   margin-top: 18px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   text-align: center;
   font-size: 11.5px;
+  line-height: 1.6;
   color: #334155;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 12px rgba(24, 56, 28, 0.12);
+  word-break: keep-all;
 }
-.footer-sub {
-  margin-top: 3px;
+
+.app-footer p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.app-footer .footer-sub {
+  margin-top: 6px;
   font-size: 11px;
-  color: #475569;
+  font-weight: 400;
+  color: #64748b;
 }
 
 /* ── 8비트 효과음 토글 버튼 ── */

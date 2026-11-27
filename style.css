@@ -923,3 +923,8 @@ select:focus {
   font-size: 10.5px;
   color: var(--ink-faint);
 }
+
+.branch-tag {
+  color: var(--accent-teal);
+  border-color: var(--accent-teal);
+}

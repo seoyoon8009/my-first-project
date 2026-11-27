@@ -713,8 +713,25 @@ select:focus {
 .el-row { display: grid; grid-template-columns: 44px 1fr 32px; align-items: center; gap: 8px; font-size: 12.5px; }
 .el-name { font-weight: 700; }
 .el-name small { color: var(--sub); margin-left: 2px; }
-.el-track { height: 8px; background: #eef1f4; border-radius: 999px; overflow: hidden; }
-.el-bar { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+.el-track {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.el-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* 오행 막대바 전용 진한 색상 */
+.el-bar.el-wood  { background: #22c55e; }
+.el-bar.el-fire  { background: #ef4444; }
+.el-bar.el-earth { background: #f59e0b; }
+.el-bar.el-metal { background: #64748b; }
+.el-bar.el-water { background: #3b82f6; }
 .el-count { text-align: right; font-size: 12px; color: var(--sub); }
 .el-count.is-max { font-weight: 800; color: var(--text); }
 
@@ -782,5 +799,11 @@ select:focus {
 /* ── 하단 버튼 및 푸터 ── */
 .action-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
 .copy-msg { margin-top: 10px; text-align: center; font-size: 13px; font-weight: 600; color: var(--primary); }
-.app-footer { margin-top: 24px; text-align: center; font-size: 11.5px; color: #8b95a1; }
+.app-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
 .footer-sub { margin-top: 3px; font-size: 11px; }

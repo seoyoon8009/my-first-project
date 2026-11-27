@@ -1248,8 +1248,8 @@ saveImgBtn.addEventListener("click", async () => {
     }
   }
 
-  // 단일 8비트 음 재생 헬퍼
-  function playTone(freq, startTime, duration, volume = 0.08, type = "triangle") {
+  // 단일 8비트 음 재생 헬퍼 (여운이 길게 남도록 보완)
+  function playTone(freq, startTime, duration, volume = 0.09, type = "triangle") {
     if (!audioCtx || !isSoundOn) return;
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
@@ -1257,13 +1257,15 @@ saveImgBtn.addEventListener("click", async () => {
     osc.frequency.setValueAtTime(freq, startTime);
 
     gain.gain.setValueAtTime(0.0001, startTime);
-    gain.gain.linearRampToValueAtTime(volume, startTime + 0.012);
+    gain.gain.linearRampToValueAtTime(volume, startTime + 0.015);
+    // 음 길이의 70% 지점까지 음량을 유지하다가 부드럽게 사라짐
+    gain.gain.setValueAtTime(volume, startTime + duration * 0.7);
     gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
 
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(startTime);
-    osc.stop(startTime + duration + 0.02);
+    osc.stop(startTime + duration + 0.03);
   }
 
   // 짧은 버튼 클릭음 (삐빅!)
@@ -1272,23 +1274,23 @@ saveImgBtn.addEventListener("click", async () => {
     ensureAudio();
     if (!audioCtx) return;
     const now = audioCtx.currentTime;
-    playTone(1046.5, now, 0.07, 0.06, "square"); // C6
+    playTone(1046.5, now, 0.08, 0.06, "square"); // C6
   }
 
-  // 포켓몬센터 치료 완료 멜로디 (딴-딴-딴-따란~)
+  // 포켓몬센터 치료 완료 멜로디 (원곡 박자: 딴- 딴- 딴- 따란~~)
   function playPokeCenterHeal() {
     if (!isSoundOn) return;
     ensureAudio();
     if (!audioCtx) return;
-    const now = audioCtx.currentTime + 0.04;
+    const now = audioCtx.currentTime + 0.05;
     const notes = [
-      { freq: 987.77, time: 0.00, dur: 0.13 }, // B5
-      { freq: 987.77, time: 0.15, dur: 0.13 }, // B5
-      { freq: 987.77, time: 0.30, dur: 0.13 }, // B5
-      { freq: 830.61, time: 0.45, dur: 0.13 }, // G#5
-      { freq: 1318.51, time: 0.60, dur: 0.42 } // E6
+      { freq: 987.77, time: 0.00, dur: 0.14 }, // B5 (딴)
+      { freq: 987.77, time: 0.18, dur: 0.14 }, // B5 (딴)
+      { freq: 987.77, time: 0.36, dur: 0.12 }, // B5 (딴)
+      { freq: 830.61, time: 0.49, dur: 0.14 }, // G#5 (따- 살짝 당김)
+      { freq: 1318.51, time: 0.65, dur: 0.78 } // E6 (란~~ 길고 풍부하게)
     ];
-    notes.forEach((n) => playTone(n.freq, now + n.time, n.dur, 0.09, "triangle"));
+    notes.forEach((n) => playTone(n.freq, now + n.time, n.dur, 0.095, "triangle"));
   }
 
   // 생년월일 기반 6자리 트레이너 ID & 발급일 업데이트

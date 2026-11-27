@@ -3,20 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>나의 파트너 포켓몬 테스트 · 캠퍼스 사주</title>
+  <title>나의 파트너 포켓몬 테스트 · 60갑자 캠퍼스 사주</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="나의 파트너 포켓몬 찾기 · 60갑자 캠퍼스 사주" />
-  <meta property="og:description" content="생년월일시로 알아보는 내 60갑자 파트너 포켓몬과 환상의 팀플 짝꿍 궁합 테스트!" />
+  <meta property="og:description" content="생년월일시로 알아보는 내 60갑자 파트너 포켓몬과 환상의 팀플·우정 궁합 테스트!" />
   <meta property="og:image" content="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app-container">
     <!-- 1. 입력 화면 -->
-    <section id="input-section" class="card">
-      <span class="badge">CAMPUS POKEMON SAJU</span>
-      <h1>나의 파트너 포켓몬 찾기</h1>
-      <p class="subtitle">생년월일시를 입력하면 나와 닮은 포켓몬과 환상의 팀플 짝꿍, 오늘의 캠퍼스 운세까지 알려드려요.</p>
+    <section id="input-section" class="card fade-in">
+      <div class="hero-intro">
+        <div class="hero-poke-row" aria-hidden="true">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="" class="hero-mini-poke float-1" />
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png" alt="" class="hero-mini-poke float-2" />
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png" alt="" class="hero-mini-poke float-3" />
+        </div>
+        <span class="badge">60갑자 CAMPUS POKEMON SAJU</span>
+        <h1>나의 파트너 포켓몬 찾기</h1>
+        <p class="subtitle">생년월일시로 알아보는 60갑자 내 포켓몬과<br />환상의 팀플 짝꿍·오늘의 캠퍼스 운세</p>
+      </div>
+
+      <!-- 모드 전환 탭: 내 사주 보기 / 둘이서 바로 궁합 보기 -->
+      <div class="mode-tabs" role="tablist" aria-label="테스트 모드 선택">
+        <button type="button" id="tab-solo" class="mode-tab is-active" role="tab" aria-selected="true">
+          ✨ 내 파트너 찾기
+        </button>
+        <button type="button" id="tab-duo" class="mode-tab" role="tab" aria-selected="false">
+          ⚡ 둘이서 바로 궁합
+        </button>
+      </div>
 
       <!-- 공유 링크로 접속했을 때 뜨는 친구 초대 카드 -->
       <div id="friend-invite-banner" class="friend-invite hidden">
@@ -32,194 +49,282 @@
       </div>
 
       <form id="test-form">
-        <div class="form-group">
-          <label for="user-name">이름 또는 닉네임</label>
-          <input type="text" id="user-name" placeholder="예: 라이츄" maxlength="10" />
-        </div>
+        <!-- 내 정보 입력 블록 -->
+        <div class="person-block">
+          <p id="my-block-label" class="person-block-title hidden">👤 내 정보 입력</p>
 
-        <div class="form-group">
-          <span class="label">성별</span>
-          <div class="segmented" role="radiogroup" aria-label="성별">
-            <label class="seg-option">
-              <input type="radio" name="gender" value="female" checked />
-              <span>여성</span>
+          <div class="form-group">
+            <label for="user-name">이름 또는 닉네임</label>
+            <input type="text" id="user-name" placeholder="예: 서윤" maxlength="10" />
+          </div>
+
+          <div class="form-group">
+            <span class="label">성별</span>
+            <div class="segmented" role="radiogroup" aria-label="성별">
+              <label class="seg-option">
+                <input type="radio" name="gender" value="female" checked />
+                <span>여성</span>
+              </label>
+              <label class="seg-option">
+                <input type="radio" name="gender" value="male" />
+                <span>남성</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <span class="label">양력 / 음력</span>
+            <div class="segmented" role="radiogroup" aria-label="양력 음력 선택">
+              <label class="seg-option">
+                <input type="radio" name="calendar" value="solar" checked />
+                <span>양력</span>
+              </label>
+              <label class="seg-option">
+                <input type="radio" name="calendar" value="lunar" />
+                <span>음력</span>
+              </label>
+            </div>
+            <label id="leap-wrap" class="leap-check hidden">
+              <input type="checkbox" id="is-leap" />
+              <span>윤달이에요</span>
             </label>
-            <label class="seg-option">
-              <input type="radio" name="gender" value="male" />
-              <span>남성</span>
-            </label>
+          </div>
+
+          <div class="form-group">
+            <span class="label">생년월일</span>
+            <div class="date-row">
+              <select id="birth-year" aria-label="태어난 해"></select>
+              <select id="birth-month" aria-label="태어난 달"></select>
+              <select id="birth-day" aria-label="태어난 날"></select>
+            </div>
+            <p id="date-error" class="field-error hidden"></p>
+          </div>
+
+          <div class="form-group no-margin">
+            <label for="birth-time">태어난 시간</label>
+            <select id="birth-time">
+              <option value="unknown">시간 모름</option>
+              <option value="자">자시 (23:30 ~ 01:29)</option>
+              <option value="축">축시 (01:30 ~ 03:29)</option>
+              <option value="인">인시 (03:30 ~ 05:29)</option>
+              <option value="묘">묘시 (05:30 ~ 07:29)</option>
+              <option value="진">진시 (07:30 ~ 09:29)</option>
+              <option value="사">사시 (09:30 ~ 11:29)</option>
+              <option value="오">오시 (11:30 ~ 13:29)</option>
+              <option value="미">미시 (13:30 ~ 15:29)</option>
+              <option value="신">신시 (15:30 ~ 17:29)</option>
+              <option value="유">유시 (17:30 ~ 19:29)</option>
+              <option value="술">술시 (19:30 ~ 21:29)</option>
+              <option value="해">해시 (21:30 ~ 23:29)</option>
+            </select>
           </div>
         </div>
 
-        <div class="form-group">
-          <span class="label">양력 / 음력</span>
-          <div class="segmented" role="radiogroup" aria-label="양력 음력 선택">
-            <label class="seg-option">
-              <input type="radio" name="calendar" value="solar" checked />
-              <span>양력</span>
-            </label>
-            <label class="seg-option">
-              <input type="radio" name="calendar" value="lunar" />
-              <span>음력</span>
+        <!-- 둘이서 바로 궁합 모드일 때 열리는 상대방 입력 블록 -->
+        <div id="duo-fields" class="person-block person-block-partner hidden">
+          <p class="person-block-title">⚡ 상대방(친구·최애·짝꿍) 정보</p>
+
+          <div class="form-group">
+            <label for="friend-name">상대방 이름 또는 별명</label>
+            <input type="text" id="friend-name" placeholder="예: 민수 또는 최애 이름" maxlength="10" />
+          </div>
+
+          <div class="form-group">
+            <span class="label">상대방 양력 / 음력</span>
+            <div class="segmented" role="radiogroup" aria-label="상대방 양력 음력 선택">
+              <label class="seg-option">
+                <input type="radio" name="friend-calendar" value="solar" checked />
+                <span>양력</span>
+              </label>
+              <label class="seg-option">
+                <input type="radio" name="friend-calendar" value="lunar" />
+                <span>음력</span>
+              </label>
+            </div>
+            <label id="friend-leap-wrap" class="leap-check hidden">
+              <input type="checkbox" id="friend-is-leap" />
+              <span>윤달이에요</span>
             </label>
           </div>
-          <label id="leap-wrap" class="leap-check hidden">
-            <input type="checkbox" id="is-leap" />
-            <span>윤달이에요</span>
-          </label>
-        </div>
 
-        <div class="form-group">
-          <span class="label">생년월일</span>
-          <div class="date-row">
-            <select id="birth-year" aria-label="태어난 해"></select>
-            <select id="birth-month" aria-label="태어난 달"></select>
-            <select id="birth-day" aria-label="태어난 날"></select>
+          <div class="form-group no-margin">
+            <span class="label">상대방 생년월일</span>
+            <div class="date-row">
+              <select id="friend-year" aria-label="상대방 태어난 해"></select>
+              <select id="friend-month" aria-label="상대방 태어난 달"></select>
+              <select id="friend-day" aria-label="상대방 태어난 날"></select>
+            </div>
+            <p id="friend-date-error" class="field-error hidden"></p>
           </div>
-          <p id="date-error" class="field-error hidden"></p>
         </div>
 
-        <div class="form-group">
-          <label for="birth-time">태어난 시간</label>
-          <select id="birth-time">
-            <option value="unknown">시간 모름</option>
-            <option value="자">자시 (23:30 ~ 01:29)</option>
-            <option value="축">축시 (01:30 ~ 03:29)</option>
-            <option value="인">인시 (03:30 ~ 05:29)</option>
-            <option value="묘">묘시 (05:30 ~ 07:29)</option>
-            <option value="진">진시 (07:30 ~ 09:29)</option>
-            <option value="사">사시 (09:30 ~ 11:29)</option>
-            <option value="오">오시 (11:30 ~ 13:29)</option>
-            <option value="미">미시 (13:30 ~ 15:29)</option>
-            <option value="신">신시 (15:30 ~ 17:29)</option>
-            <option value="유">유시 (17:30 ~ 19:29)</option>
-            <option value="술">술시 (19:30 ~ 21:29)</option>
-            <option value="해">해시 (21:30 ~ 23:29)</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn-primary">결과 카드 확인하기</button>
+        <button type="submit" id="submit-btn" class="btn-primary">결과 카드 확인하기</button>
       </form>
+    </section>
+
+    <!-- 1.5. 사주 풀이 로딩 화면 -->
+    <section id="loading-section" class="card loading-card hidden" aria-live="polite">
+      <div class="pokeball-spinner" aria-hidden="true"></div>
+      <h2 class="loading-title">사주 명식 분석 중...</h2>
+      <p id="loading-step-text" class="loading-step">60갑자 일주와 오행 기운을 계산하고 있어요</p>
+      <div class="loading-track">
+        <div id="loading-bar-fill" class="loading-fill"></div>
+      </div>
     </section>
 
     <!-- 2. 결과 화면 -->
     <section id="result-section" class="card hidden">
       <div id="result-card" class="result-box">
-        <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
-        <img id="result-img" class="result-img" src="" alt="내 포켓몬 이미지" crossorigin="anonymous" />
-        <p id="result-user" class="user-label">당신의 파트너 포켓몬</p>
-        <h2 id="result-title">루카리오</h2>
-        <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
-
-        <p id="result-birth" class="birth-info"></p>
-
-        <div id="result-keywords" class="keyword-list"></div>
-        <p id="result-desc" class="result-desc"></p>
-
-        <div class="yinyang-box">
-          <span id="yinyang-tag" class="yinyang-tag"></span>
-          <p id="yinyang-text" class="yinyang-text"></p>
-        </div>
-
-        <!-- 새로 추가: 일지(지지) 기반 속마음·행동 스타일 -->
-        <div class="yinyang-box">
-          <span id="branch-tag" class="yinyang-tag branch-tag"></span>
-          <p id="branch-text" class="yinyang-text"></p>
-        </div>
-
-        <!-- 친구 링크로 접속했을 때만 표시되는 팀플·우정 궁합 카드 -->
-        <div id="friend-compat-section" class="compat-section hidden">
-          <div class="compat-header">
-            <p class="partner-section-title">우리 둘의 팀플·우정 궁합</p>
-            <span id="compat-score-badge" class="compat-score">98점</span>
+        <!-- 트레이딩 카드 스타일 상단 히어로 배너 -->
+        <div class="result-hero">
+          <div class="result-hero-top">
+            <span id="result-pillar" class="pillar-tag">경오(庚午)일주</span>
+            <span id="result-dex-no" class="dex-tag">No.448</span>
           </div>
-          <div class="compat-duo">
-            <div class="compat-member">
-              <img id="compat-my-img" class="compat-avatar" src="" alt="내 포켓몬" crossorigin="anonymous" />
-              <span id="compat-my-name" class="compat-member-name"></span>
-            </div>
-            <span class="compat-heart">⚡</span>
-            <div class="compat-member">
-              <img id="compat-friend-img" class="compat-avatar" src="" alt="친구 포켓몬" crossorigin="anonymous" />
-              <span id="compat-friend-name" class="compat-member-name"></span>
-            </div>
+          <div class="result-img-stage">
+            <img id="result-img" class="result-img float-slow" src="" alt="내 포켓몬 이미지" crossorigin="anonymous" />
           </div>
-          <p id="compat-headline" class="compat-headline"></p>
-          <p id="compat-desc" class="compat-desc"></p>
+          <p id="result-user" class="user-label">당신의 파트너 포켓몬</p>
+          <h2 id="result-title">루카리오</h2>
+          <p id="result-subtitle" class="result-sub">기준이 명확하고 의리 있는 단단한 승부사</p>
+          <p id="result-birth" class="birth-info"></p>
+          <div id="result-keywords" class="keyword-list"></div>
         </div>
 
-        <!-- 사주 명식 & 오행 분포 -->
-        <div class="saju-section">
-          <p class="partner-section-title">나의 사주 명식</p>
-          <div id="pillar-table" class="pillar-table"></div>
-          <p id="saju-note" class="saju-note hidden"></p>
+        <div class="result-body">
+          <p id="result-desc" class="result-desc"></p>
 
-          <p class="partner-section-title element-title">오행 분포</p>
-          <div id="element-chart" class="element-chart"></div>
-          <p id="element-summary" class="element-summary"></p>
-        </div>
+          <div class="yinyang-box">
+            <span id="yinyang-tag" class="yinyang-tag"></span>
+            <p id="yinyang-text" class="yinyang-text"></p>
+          </div>
 
-        <!-- 캠퍼스 파트너 포켓몬 영역 -->
-        <div class="partner-section">
-          <p class="partner-section-title">나와 찰떡궁합 캠퍼스 파트너</p>
-          <div class="partner-grid">
-            <div class="partner-card">
-              <span class="partner-role">환상의 팀플 짝꿍</span>
-              <span id="hap-badge" class="partner-badge badge-hap">천간합</span>
-              <img id="hap-img" class="partner-img" src="" alt="천간합 파트너" crossorigin="anonymous" />
-              <strong id="hap-name" class="partner-name">나몰빼미</strong>
-              <p id="hap-reason" class="partner-reason"></p>
-            </div>
+          <div class="yinyang-box">
+            <span id="branch-tag" class="yinyang-tag branch-tag"></span>
+            <p id="branch-text" class="yinyang-text"></p>
+          </div>
 
-            <div class="partner-card">
-              <span class="partner-role">시험기간 멘탈 조력자</span>
-              <span id="sangsaeng-badge" class="partner-badge badge-sangsaeng">상생</span>
-              <img id="sangsaeng-img" class="partner-img" src="" alt="상생 파트너" crossorigin="anonymous" />
-              <strong id="sangsaeng-name" class="partner-name">잠만보</strong>
-              <p id="sangsaeng-reason" class="partner-reason"></p>
+          <!-- 캠퍼스 능력치 스탯 게이지 -->
+          <div class="stats-section">
+            <p class="partner-section-title">캠퍼스 생활 능력치</p>
+            <div class="stats-grid">
+              <div class="stat-row">
+                <span class="stat-label">과제 추진력</span>
+                <div class="stat-track"><div id="stat-drive" class="stat-fill"></div></div>
+                <span id="stat-drive-val" class="stat-val">92</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">디테일·정리</span>
+                <div class="stat-track"><div id="stat-detail" class="stat-fill"></div></div>
+                <span id="stat-detail-val" class="stat-val">85</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">팀플 친화력</span>
+                <div class="stat-track"><div id="stat-social" class="stat-fill"></div></div>
+                <span id="stat-social-val" class="stat-val">88</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">시험 멘탈력</span>
+                <div class="stat-track"><div id="stat-mental" class="stat-fill"></div></div>
+                <span id="stat-mental-val" class="stat-val">95</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- 오늘의 캠퍼스 운세 영역 -->
-        <div class="fortune-section">
-          <div class="fortune-header">
-            <p class="partner-section-title">오늘의 캠퍼스 기운 &amp; 운세</p>
-            <span id="today-pillar-tag" class="today-tag"></span>
+          <!-- 친구 궁합 카드 (URL 초대 또는 둘이서 바로 궁합 입력 시 표시) -->
+          <div id="friend-compat-section" class="compat-section hidden">
+            <div class="compat-header">
+              <p class="partner-section-title">우리 둘의 팀플·우정 궁합</p>
+              <span id="compat-score-badge" class="compat-score">100점</span>
+            </div>
+            <div class="compat-duo">
+              <div class="compat-member">
+                <img id="compat-my-img" class="compat-avatar" src="" alt="내 포켓몬" crossorigin="anonymous" />
+                <span id="compat-my-name" class="compat-member-name"></span>
+              </div>
+              <span class="compat-heart">⚡</span>
+              <div class="compat-member">
+                <img id="compat-friend-img" class="compat-avatar" src="" alt="상대 포켓몬" crossorigin="anonymous" />
+                <span id="compat-friend-name" class="compat-member-name"></span>
+              </div>
+            </div>
+            <p id="compat-headline" class="compat-headline"></p>
+            <p id="compat-desc" class="compat-desc"></p>
           </div>
-          <p id="fortune-overall" class="fortune-overall"></p>
 
-          <div class="fortune-list">
-            <div class="fortune-item">
-              <div class="fortune-item-top">
-                <span class="fortune-cat">📚 학점·과제운</span>
-                <span id="fortune-study-badge" class="fortune-badge"></span>
+          <!-- 사주 명식 & 오행 분포 -->
+          <div class="saju-section">
+            <p class="partner-section-title">나의 사주 명식</p>
+            <div id="pillar-table" class="pillar-table"></div>
+            <p id="saju-note" class="saju-note hidden"></p>
+
+            <p class="partner-section-title element-title">오행 분포</p>
+            <div id="element-chart" class="element-chart"></div>
+            <p id="element-summary" class="element-summary"></p>
+          </div>
+
+          <!-- 캠퍼스 파트너 포켓몬 영역 -->
+          <div class="partner-section">
+            <p class="partner-section-title">나와 찰떡궁합 캠퍼스 파트너</p>
+            <div class="partner-grid">
+              <div class="partner-card">
+                <span class="partner-role">환상의 팀플 짝꿍</span>
+                <span id="hap-badge" class="partner-badge badge-hap">천지덕합</span>
+                <img id="hap-img" class="partner-img" src="" alt="천지덕합 파트너" crossorigin="anonymous" />
+                <strong id="hap-name" class="partner-name">나몰빼미</strong>
+                <p id="hap-reason" class="partner-reason"></p>
               </div>
-              <p id="fortune-study-text" class="fortune-text"></p>
+
+              <div class="partner-card">
+                <span class="partner-role">시험기간 멘탈 조력자</span>
+                <span id="sangsaeng-badge" class="partner-badge badge-sangsaeng">상생삼합</span>
+                <img id="sangsaeng-img" class="partner-img" src="" alt="상생삼합 파트너" crossorigin="anonymous" />
+                <strong id="sangsaeng-name" class="partner-name">잠만보</strong>
+                <p id="sangsaeng-reason" class="partner-reason"></p>
+              </div>
             </div>
+          </div>
 
-            <div class="fortune-item">
-              <div class="fortune-item-top">
-                <span class="fortune-cat">💸 알바·지갑운</span>
-                <span id="fortune-money-badge" class="fortune-badge"></span>
-              </div>
-              <p id="fortune-money-text" class="fortune-text"></p>
+          <!-- 오늘의 캠퍼스 운세 영역 -->
+          <div class="fortune-section">
+            <div class="fortune-header">
+              <p class="partner-section-title">오늘의 캠퍼스 기운 &amp; 운세</p>
+              <span id="today-pillar-tag" class="today-tag"></span>
             </div>
+            <p id="fortune-overall" class="fortune-overall"></p>
 
-            <div class="fortune-item">
-              <div class="fortune-item-top">
-                <span class="fortune-cat">💘 캠퍼스 썸·동아리운</span>
-                <span id="fortune-love-badge" class="fortune-badge"></span>
+            <div class="fortune-list">
+              <div class="fortune-item">
+                <div class="fortune-item-top">
+                  <span class="fortune-cat">📚 학점·과제운</span>
+                  <span id="fortune-study-badge" class="fortune-badge"></span>
+                </div>
+                <p id="fortune-study-text" class="fortune-text"></p>
               </div>
-              <p id="fortune-love-text" class="fortune-text"></p>
-            </div>
 
-            <div class="fortune-item">
-              <div class="fortune-item-top">
-                <span class="fortune-cat">☕ 공강·휴식운</span>
-                <span id="fortune-rest-badge" class="fortune-badge"></span>
+              <div class="fortune-item">
+                <div class="fortune-item-top">
+                  <span class="fortune-cat">💸 알바·지갑운</span>
+                  <span id="fortune-money-badge" class="fortune-badge"></span>
+                </div>
+                <p id="fortune-money-text" class="fortune-text"></p>
               </div>
-              <p id="fortune-rest-text" class="fortune-text"></p>
+
+              <div class="fortune-item">
+                <div class="fortune-item-top">
+                  <span class="fortune-cat">💘 캠퍼스 썸·동아리운</span>
+                  <span id="fortune-love-badge" class="fortune-badge"></span>
+                </div>
+                <p id="fortune-love-text" class="fortune-text"></p>
+              </div>
+
+              <div class="fortune-item">
+                <div class="fortune-item-top">
+                  <span class="fortune-cat">☕ 공강·휴식운</span>
+                  <span id="fortune-rest-badge" class="fortune-badge"></span>
+                </div>
+                <p id="fortune-rest-text" class="fortune-text"></p>
+              </div>
             </div>
           </div>
         </div>
@@ -233,7 +338,7 @@
       <p id="copy-msg" class="copy-msg hidden">내 결과 링크가 복사되었어요! 친구에게 보내 궁합을 확인해 보세요.</p>
     </section>
 
-    <!-- 5. 하단 비영리 팬메이드 안내 푸터 -->
+    <!-- 하단 비영리 팬메이드 안내 푸터 -->
     <footer class="app-footer">
       <p>본 테스트는 수익을 창출하지 않는 비영리 팬메이드 프로젝트입니다.</p>
       <p class="footer-sub">포켓몬스터 관련 이미지 및 명칭의 저작권은 ©Pokémon / Nintendo / Creatures / GAME FREAK에 있습니다.</p>

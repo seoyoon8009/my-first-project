@@ -826,3 +826,99 @@ select:focus {
   font-size: 11px;
   color: #475569;
 }
+
+/* ── 8비트 효과음 토글 버튼 ── */
+.sound-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+
+.sound-toggle {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sound-toggle:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.sound-toggle.is-muted {
+  background: #f1f5f9;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+}
+
+/* ── 저장 카드 전용 트레이너 ID & 도감 바코드 푸터 ── */
+.dex-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: #1e293b;
+  color: #f8fafc;
+  border-top: 2px solid #0f172a;
+}
+
+.dex-footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dex-id-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: #cbd5e1;
+}
+
+.dex-id-label strong {
+  color: #facc15;
+  font-weight: 800;
+}
+
+.dex-issue-date {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.dex-barcode-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.dex-barcode {
+  width: 96px;
+  height: 18px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f8fafc 0px, #f8fafc 2px,
+    transparent 2px, transparent 4px,
+    #f8fafc 4px, #f8fafc 5px,
+    transparent 5px, transparent 8px,
+    #f8fafc 8px, #f8fafc 11px,
+    transparent 11px, transparent 13px
+  );
+  opacity: 0.9;
+}
+
+.dex-serial {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+}

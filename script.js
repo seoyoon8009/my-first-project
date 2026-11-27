@@ -1232,3 +1232,120 @@ saveImgBtn.addEventListener("click", async () => {
     saveImgBtn.textContent = originalLabel;
   }
 });
+
+/* ── 8비트 포켓몬센터 회복 효과음 & 트레이너 ID 바코드 연동 ── */
+(function () {
+  let audioCtx = null;
+  let isSoundOn = true;
+
+  function ensureAudio() {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) audioCtx = new AudioContextClass();
+    }
+    if (audioCtx && audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+  }
+
+  // 단일 8비트 음 재생 헬퍼
+  function playTone(freq, startTime, duration, volume = 0.08, type = "triangle") {
+    if (!audioCtx || !isSoundOn) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, startTime);
+
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.linearRampToValueAtTime(volume, startTime + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(startTime);
+    osc.stop(startTime + duration + 0.02);
+  }
+
+  // 짧은 버튼 클릭음 (삐빅!)
+  function playUiBeep() {
+    if (!isSoundOn) return;
+    ensureAudio();
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime;
+    playTone(1046.5, now, 0.07, 0.06, "square"); // C6
+  }
+
+  // 포켓몬센터 치료 완료 멜로디 (딴-딴-딴-따란~)
+  function playPokeCenterHeal() {
+    if (!isSoundOn) return;
+    ensureAudio();
+    if (!audioCtx) return;
+    const now = audioCtx.currentTime + 0.04;
+    const notes = [
+      { freq: 987.77, time: 0.00, dur: 0.13 }, // B5
+      { freq: 987.77, time: 0.15, dur: 0.13 }, // B5
+      { freq: 987.77, time: 0.30, dur: 0.13 }, // B5
+      { freq: 830.61, time: 0.45, dur: 0.13 }, // G#5
+      { freq: 1318.51, time: 0.60, dur: 0.42 } // E6
+    ];
+    notes.forEach((n) => playTone(n.freq, now + n.time, n.dur, 0.09, "triangle"));
+  }
+
+  // 생년월일 기반 6자리 트레이너 ID & 발급일 업데이트
+  function updateTrainerFooter() {
+    const yearEl = document.getElementById("birth-year");
+    const monthEl = document.getElementById("birth-month");
+    const dayEl = document.getElementById("birth-day");
+    const idTarget = document.getElementById("trainer-id-num");
+    const dateTarget = document.getElementById("dex-issue-date");
+
+    if (yearEl && monthEl && dayEl && idTarget) {
+      const yy = String(yearEl.value).slice(-2).padStart(2, "0");
+      const mm = String(monthEl.value).padStart(2, "0");
+      const dd = String(dayEl.value).padStart(2, "0");
+      idTarget.textContent = `${yy}${mm}${dd}`;
+    }
+
+    if (dateTarget) {
+      const today = new Date();
+      const y = today.getFullYear();
+      const m = String(today.getMonth() + 1).padStart(2, "0");
+      const d = String(today.getDate()).padStart(2, "0");
+      dateTarget.textContent = `ISSUED ${y}.${m}.${d} · SAJU DEX`;
+    }
+  }
+
+  // 사운드 토글 버튼 이벤트
+  const toggleBtn = document.getElementById("sound-toggle-btn");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      isSoundOn = !isSoundOn;
+      toggleBtn.textContent = isSoundOn ? "🔊 8비트 효과음 ON" : "🔇 8비트 효과음 OFF";
+      toggleBtn.setAttribute("aria-pressed", String(isSoundOn));
+      toggleBtn.classList.toggle("is-muted", !isSoundOn);
+      if (isSoundOn) playUiBeep();
+    });
+  }
+
+  // 제출 버튼 클릭 시 오디오 컨텍스트 활성화 + 클릭음
+  const submitBtn = document.getElementById("submit-btn");
+  if (submitBtn) {
+    submitBtn.addEventListener("click", () => {
+      playUiBeep();
+    });
+  }
+
+  // 결과 섹션이 열릴 때 자동으로 회복음 재생 및 트레이너 ID 세팅
+  const resultSection = document.getElementById("result-section");
+  if (resultSection) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((m) => {
+        if (m.attributeName === "class" && !resultSection.classList.contains("hidden")) {
+          updateTrainerFooter();
+          playPokeCenterHeal();
+        }
+      });
+    });
+    observer.observe(resultSection, { attributes: true });
+  }
+})();

@@ -1284,12 +1284,27 @@ saveImgBtn.addEventListener("click", async () => {
     if (!audioCtx) return;
     const now = audioCtx.currentTime + 0.05;
     const notes = [
-  { freq: 987.77,  time: 0.00, dur: 0.34 }, // B5 (딴)
-  { freq: 987.77,  time: 0.40, dur: 0.34 }, // B5 (딴)
-  { freq: 987.77,  time: 0.80, dur: 0.17 }, // B5 (딴)
-  { freq: 830.61,  time: 1.00, dur: 0.17 }, // G#5 (따)
-  { freq: 1318.51, time: 1.20, dur: 0.65 }  // E6 (란~~)
-];
+      // 1박 (딴) - B5 + G#5
+      { freq: 987.77,  time: 0.00, dur: 0.34 },
+      { freq: 830.61,  time: 0.00, dur: 0.34 },
+
+      // 2박 (딴) - B5 + G#5
+      { freq: 987.77,  time: 0.40, dur: 0.34 },
+      { freq: 830.61,  time: 0.40, dur: 0.34 },
+
+      // 3박 (딴) - B5 + G#5
+      { freq: 987.77,  time: 0.80, dur: 0.17 },
+      { freq: 830.61,  time: 0.80, dur: 0.17 },
+
+      // 3박 반 엇박 (따) - G#5 + E5
+      { freq: 830.61,  time: 1.00, dur: 0.17 },
+      { freq: 659.25,  time: 1.00, dur: 0.17 },
+
+      // 4박 마무리 (란~~) - E6 + B5 + G#5
+      { freq: 1318.51, time: 1.20, dur: 0.65 },
+      { freq: 987.77,  time: 1.20, dur: 0.65 },
+      { freq: 830.61,  time: 1.20, dur: 0.65 }
+    ];
     notes.forEach((n) => playTone(n.freq, now + n.time, n.dur, 0.095, "square"));
   }
 
